@@ -2,17 +2,30 @@
 {
   programs.firefox = {
     enable = true;
+    policies = {
+      AIControls = {
+        Default = {
+          Value = "blocked";
+          Locked = true;
+        };
+      };
+    };
     profiles.eslam = {
       id = 0;
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
-        bitwarden
-        ublock-origin
-        sponsorblock
-        darkreader
-        vimium
-        youtube-shorts-block
-      ];
+      extensions = {
+        packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+          bitwarden
+          ublock-origin
+          sponsorblock
+          darkreader
+          vimium
+          youtube-shorts-block
+        ];
+      };
       settings = {
+        "extensions.autoDisableScopes" = 0;
+        # Passwords
+        "signon.rememberSignons" = true;
         # Privacy
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
