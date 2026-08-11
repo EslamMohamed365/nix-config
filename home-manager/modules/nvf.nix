@@ -9,15 +9,19 @@
       telescope.enable = true; # Fuzzy finder
       autocomplete.nvim-cmp.enable = true; # Autocompletion
       filetree.neo-tree.enable = true; # File explorer
-      
+      binds.whichKey.enable = true; # Keybinding hints
+
       # Language Servers & Treesitter
-      lsp.enable = true;
+      lsp = {
+        enable = true;
+        formatOnSave = true;
+      };
       languages = {
         enableTreesitter = true;
-        
+
         # Turn on languages you use:
         nix.enable = true;
-        tsx.enable = true;  # TypeScript/JS
+        tsx.enable = true; # TypeScript/JS
         python.enable = true;
         rust.enable = true;
       };

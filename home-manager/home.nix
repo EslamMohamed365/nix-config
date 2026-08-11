@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
 
   home = {
     username = "eslam";
@@ -27,19 +28,19 @@
     ./modules/nvf.nix
   ];
   programs = {
-  gh ={ 
-  enable = true;
-  };
+    gh = {
+      enable = true;
+    };
 
     kitty = {
-    enable = true;
+      enable = true;
     };
     opencode = {
-    enable = true;
+      enable = true;
     };
     lazygit = {
-    enable = true;
-    shellWrapperName = "lg";
+      enable = true;
+      shellWrapperName = "lg";
     };
     git = {
       enable = true;
