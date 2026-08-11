@@ -16,6 +16,7 @@
       ripgrep
       fetch
       git-extras
+      hyprlauncher
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
@@ -25,6 +26,7 @@
   };
   imports = [
     ./modules/firefox.nix
+    ./modules/hyprland.nix
     ./modules/nvf.nix
   ];
   programs = {
