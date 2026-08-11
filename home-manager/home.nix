@@ -18,7 +18,7 @@
     stateVersion = "26.11";
   };
   stylix = {
-    targets.firefox.colorTheme.enable = true ;
+    targets.firefox.profileNames = [ "default" ];
   };
   imports = [
     inputs.nixvim.homeModules.nixvim
