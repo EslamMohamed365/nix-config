@@ -33,6 +33,7 @@
 
     nixvim = {
     enable = true;
+    nixpkgs.source = inputs.nixpkgs;
     defaultEditor = true;
     clipboard.providers.wl-copy.enable = true;
     globals = {mapleader = " ";
