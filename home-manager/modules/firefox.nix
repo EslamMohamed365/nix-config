@@ -24,6 +24,9 @@
       };
       settings = {
         "extensions.autoDisableScopes" = 0;
+        # DRM (Widevine) for streaming sites
+        "media.eme.enabled" = true;
+        "media.eme.require-app-approval" = false;
         # Passwords
         "signon.rememberSignons" = true;
         # Privacy
