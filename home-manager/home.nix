@@ -31,6 +31,9 @@
     gh = {
       enable = true;
     };
+    ssh = {
+      enable = true;
+    };
 
     kitty = {
       enable = true;

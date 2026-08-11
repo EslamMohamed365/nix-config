@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Declarative disk partitioning (defines fileSystems, replaces
     # hardware-configuration.nix for mounting)
@@ -20,7 +21,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         users.eslam = import ../home-manager/home.nix;
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = { inherit inputs; };
         backupFileExtension = "-bak";
       };
     }
@@ -31,14 +32,19 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-hardware = {
-enableRedistributableFirmware = true;
-enableAllFirmware = true;
+  hardware = {
+    enableRedistributableFirmware = true;
+    enableAllFirmware = true;
 
-};
-programs = {
-hyprland.enable = true;
-};
+  };
+  programs = {
+    hyprland = {
+      enable = true;
+    };
+    ssh = {
+      startAgent = true;
+    };
+  };
   # Stylix theming
   stylix = {
     enable = true;
@@ -65,7 +71,7 @@ hyprland.enable = true;
 
   nixpkgs = {
     # You can add overlays here
-    overlays = [];
+    overlays = [ ];
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -95,24 +101,28 @@ hyprland.enable = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+      ];
     };
   };
 
   # SSH server. Useful for headless installs.
-  services = { openssh = {
-    enable = true;
-    settings = {
-      # Opinionated: forbid root login through SSH.
-      PermitRootLogin = "no";
-      # Passwords enabled so you can log in until you add your SSH keys.
-      # Switch to false once authorizedKeys.keys is populated.
-      PasswordAuthentication = true;
+  services = {
+    openssh = {
+      enable = true;
+      settings = {
+        # Opinionated: forbid root login through SSH.
+        PermitRootLogin = "no";
+        # Passwords enabled so you can log in until you add your SSH keys.
+        # Switch to false once authorizedKeys.keys is populated.
+        PasswordAuthentication = true;
+      };
     };
-  };
-  displayManager.ly = {
-  enable = true;
-  };
+    displayManager.ly = {
+      enable = true;
+    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
