@@ -16,6 +16,11 @@
     nixvim = {
     url = "github:nix-community/nixvim";
     inputs.nixpkgs.follows = "nixpkgs";
+    # Stylix
+    stylix = {
+    url = "github:nix-community/stylix";
+    inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   };
 
@@ -35,7 +40,10 @@
         inherit system;
         specialArgs = {inherit inputs;};
         # > Our main nixos configuration file <
-        modules = [./nixos/configuration.nix];
+        modules = [
+	./nixos/configuration.nix
+	stylix.nixosModules.stylix
+      ];
       };
     };
   };
