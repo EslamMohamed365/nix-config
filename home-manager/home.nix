@@ -14,6 +14,7 @@
     packages = with pkgs; [
       ripgrep
       fetch
+      git-extras
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
@@ -25,6 +26,10 @@
     inputs.nixvim.homeModules.nixvim
   ];
   programs = {
+  gh ={ 
+  enable = true;
+  };
+
     nixvim = {
     enable = true;
     defaultEditor = true;
@@ -58,7 +63,7 @@
     };
     git = {
       enable = true;
-        settings = {
+      settings = {
         user.name = "EslamMohamed365";
         user.email = "am5484452@gmail.com";
         init.defaultBranch = "main";
