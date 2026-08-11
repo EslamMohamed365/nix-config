@@ -11,6 +11,21 @@
       filetree.neo-tree.enable = true; # File explorer
       binds.whichKey.enable = true; # Keybinding hints
 
+      # Core editor ergonomics
+      undoFile.enable = true; # Persistent undo across restarts
+      searchCase = "smart"; # Smart-case search
+      globals.mapleader = " "; # Space as leader
+
+      # Essential plugins
+      git.enable = true; # Gitsigns: inline diff markers + hunk nav
+      snippets.luasnip.enable = true; # Snippet engine (pairs with nvim-cmp)
+      autopairs.nvim-autopairs.enable = true; # Auto-close (), [], {}
+      comments.comment-nvim.enable = true; # gc to comment lines/blocks
+      terminal.toggleterm.enable = true; # Better integrated terminal
+      utility.oil-nvim.enable = true; # Modern file manager
+      utility.surround.enable = true; # ys/cs/ds to edit surrounding pairs
+      ui.noice.enable = true; # Pretty cmdline + notifications
+
       # Language Servers & Treesitter
       lsp = {
         enable = true;
@@ -24,6 +39,9 @@
         tsx.enable = true; # TypeScript/JS
         python.enable = true;
         rust.enable = true;
+        markdown.enable = true;
+        bash.enable = true;
+        lua.enable = true;
       };
     };
   };
