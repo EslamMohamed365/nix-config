@@ -20,10 +20,11 @@
     stateVersion = "26.11";
   };
   stylix = {
-    targets.firefox.profileNames = [ "default" ];
+    targets.firefox.profileNames = [ "eslam" ];
   };
   imports = [
     inputs.nixvim.homeModules.nixvim
+    ./modules/firefox.nix
   ];
   programs = {
   gh ={ 
@@ -52,14 +53,12 @@
     kitty = {
     enable = true;
     };
-    firefox = {
-    enable = true;
-    };
     opencode = {
     enable = true;
     };
     lazygit = {
     enable = true;
+    shellWrapperName = "lg";
     };
     git = {
       enable = true;
@@ -75,5 +74,6 @@
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "/home/eslam/nix-config/"; # sets NH_OS_FLAKE variable for you
     };
+    tealdeer.enable = true;
   };
 }
