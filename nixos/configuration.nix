@@ -30,7 +30,14 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+hardware = {
+enableRedistributableFirmware = true;
+enableAllFirmware = true;
 
+};
+programs = {
+hyprland.enable = true;
+};
   nixpkgs = {
     # You can add overlays here
     overlays = [];
@@ -68,7 +75,7 @@
   };
 
   # SSH server. Useful for headless installs.
-  services.openssh = {
+  services = { openssh = {
     enable = true;
     settings = {
       # Opinionated: forbid root login through SSH.
@@ -77,6 +84,10 @@
       # Switch to false once authorizedKeys.keys is populated.
       PasswordAuthentication = true;
     };
+  };
+  displayManager.ly = {
+  enable = true;
+  };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

@@ -12,6 +12,11 @@
     # Declarative disk partitioning
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    # Nixvim
+    nixvim = {
+    url = "github:nix-community/nixvim";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
   };
 
   outputs = {
