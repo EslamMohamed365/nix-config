@@ -26,7 +26,7 @@ sudo nix run --extra-experimental-features "nix-command flakes" \
   -- --flake "${SCRIPT_DIR}#nix-btw" \
   --disk main "${TARGET_DISK}" \
   --write-efi-boot-entries \
-  --accept-flake-config
+  --option accept-flake-config true
 
 echo ""
 echo "Installation complete."
