@@ -21,6 +21,7 @@
         useUserPackages = true;
         users.eslam = import ../home-manager/home.nix;
         extraSpecialArgs = {inherit inputs;};
+        backupFileExtension = "-bak";
       };
     }
   ];

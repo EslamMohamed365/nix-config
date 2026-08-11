@@ -17,9 +17,11 @@
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
   };
+  stylix = {
+    targets.firefox.colorTheme.enable = true ;
+  };
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-    inputs.stylix.homeModules.stylix
+    inputs.nixvim.homeModules.nixvim
   ];
   programs = {
     nixvim = {
