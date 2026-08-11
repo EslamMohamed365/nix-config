@@ -14,20 +14,22 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     # Nixvim
     nixvim = {
-    url = "github:nix-community/nixvim";
-    inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Stylix
     stylix = {
-    url = "github:nix-community/stylix";
-    inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    stylix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -41,9 +43,9 @@
         specialArgs = {inherit inputs;};
         # > Our main nixos configuration file <
         modules = [
-	./nixos/configuration.nix
-	stylix.nixosModules.stylix
-      ];
+          stylix.nixosModules.stylix
+          ./nixos/configuration.nix
+        ];
       };
     };
   };

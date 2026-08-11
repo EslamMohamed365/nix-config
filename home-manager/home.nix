@@ -17,8 +17,9 @@
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
   };
-imports = [
+  imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.stylix.homeModules.stylix
   ];
   programs = {
     nixvim = {
@@ -44,6 +45,9 @@ imports = [
     enable = true;
     };
     firefox = {
+    enable = true;
+    };
+    opencode = {
     enable = true;
     };
     lazygit = {

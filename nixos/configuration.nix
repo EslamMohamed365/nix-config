@@ -38,6 +38,12 @@ enableAllFirmware = true;
 programs = {
 hyprland.enable = true;
 };
+  # Stylix theming
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  };
+
   nixpkgs = {
     # You can add overlays here
     overlays = [];
