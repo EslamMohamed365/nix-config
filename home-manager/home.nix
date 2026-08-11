@@ -13,6 +13,7 @@
     homeDirectory = "/home/eslam";
     packages = with pkgs; [
       ripgrep
+      fetch
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
