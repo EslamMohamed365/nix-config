@@ -24,7 +24,7 @@
   };
   imports = [
     ./modules/firefox.nix
-    ./modules/nixvim.nix
+    ./modules/nvf.nix
   ];
   programs = {
   gh ={ 
