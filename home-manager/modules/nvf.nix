@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  imports = [ inputs.nvf.nixosModules.default ];
+  imports = [ inputs.nvf.homeManagerModules.default ];
 
   programs.nvf = {
     enable = true;
@@ -11,13 +11,13 @@
       filetree.neo-tree.enable = true; # File explorer
       
       # Language Servers & Treesitter
+      lsp.enable = true;
       languages = {
-        enableLSP = true;
         enableTreesitter = true;
         
         # Turn on languages you use:
         nix.enable = true;
-        ts.enable = true;    # TypeScript/JS
+        tsx.enable = true;  # TypeScript/JS
         python.enable = true;
         rust.enable = true;
       };
