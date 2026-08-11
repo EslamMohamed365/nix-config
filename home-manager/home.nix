@@ -38,9 +38,7 @@
     kitty = {
       enable = true;
     };
-    opencode = {
-      enable = true;
-    };
+    opencode.enable = true;
     lazygit = {
       enable = true;
       shellWrapperName = "lg";
