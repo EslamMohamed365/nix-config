@@ -4,6 +4,7 @@
   programs.nvf = {
     enable = true;
     settings.vim = {
+      useSystemClipboard = true;
       # Built-in IDE features
       statusline.lualine.enable = true;
       telescope.enable = true; # Fuzzy finder

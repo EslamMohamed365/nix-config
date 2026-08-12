@@ -16,6 +16,7 @@
         packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           bitwarden
           ublock-origin
+          stylus
           sponsorblock
           vimium
           youtube-shorts-block
