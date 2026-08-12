@@ -16,7 +16,10 @@
       ripgrep
       fetch
       git-extras
-      hyprlauncher
+      fuzzel
+      fd
+      fzf
+      wl-clipboard-rs
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
@@ -33,11 +36,21 @@
     gh = {
       enable = true;
     };
+    waybar = {
+      enable = true;
+      systemd.enable = true;
+    };
+    yazi = {
+      enable = true;
+    };
     ssh = {
       enable = true;
     };
 
     kitty = {
+      enable = true;
+    };
+    mpv = {
       enable = true;
     };
     opencode.enable = true;

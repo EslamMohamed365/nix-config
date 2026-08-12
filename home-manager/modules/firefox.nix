@@ -17,7 +17,6 @@
           bitwarden
           ublock-origin
           sponsorblock
-          darkreader
           vimium
           youtube-shorts-block
         ];

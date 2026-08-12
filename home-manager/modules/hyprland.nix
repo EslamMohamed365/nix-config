@@ -9,16 +9,13 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
 
-    # Hyprland and xdg-desktop-portal-hyprland are provided by the NixOS
-    # module (programs.hyprland.enable), so don't install them here.
     package = null;
     portalPackage = null;
 
-    # Hyprland >= 0.55 uses a Lua config (writes ~/.config/hypr/hyprland.lua)
     configType = "lua";
 
     settings = {
-      # Lua variables shared by the keybinds below.
+      # Lua variables shared by keybinds
       mod = {
         _var = "SUPER";
       };
@@ -29,7 +26,7 @@ in
         _var = "firefox";
       };
       launcher = {
-        _var = "hyprlauncher";
+        _var = "fuzzel";
       };
 
       # Environment variables
@@ -48,8 +45,7 @@ in
         }
       ];
 
-      # Look and feel. Colors come from the Stylix target (stylix.targets.hyprland)
-      # so the borders/shadows keep in sync with the theme.
+      # Config table
       config = {
         general = {
           gaps_in = 5;
@@ -85,7 +81,8 @@ in
         };
 
         input = {
-          kb_layout = "us";
+          kb_layout = "us,ara";
+          kb_options = "grp:win_space_toggle,caps:escape";
           follow_mouse = 1;
           numlock_by_default = true;
         };
@@ -103,8 +100,19 @@ in
           disable_hyprland_logo = true;
         };
       };
-
-      # Curves and animations (same defaults as the generated example config)
+      monitor = [
+        {
+          _args = [
+            {
+              output = "eDP-1";
+              mode = "1920x1080@60";
+              position = "0x0";
+              scale = 1;
+            }
+          ];
+        }
+      ];
+      # Curves and animations
       curve = [
         {
           _args = [
@@ -401,7 +409,7 @@ in
         }
       ];
 
-      # Application launches
+      # Binds
       bind = [
         {
           _args = [
@@ -411,13 +419,13 @@ in
         }
         {
           _args = [
-            (mkLuaInline "mod .. \" + R\"")
+            (mkLuaInline "mod .. \" + D\"")
             (mkLuaInline "hl.dsp.exec_cmd(launcher)")
           ];
         }
         {
           _args = [
-            (mkLuaInline "mod .. \" + C\"")
+            (mkLuaInline "mod .. \" + B\"")
             (mkLuaInline "hl.dsp.exec_cmd(browser)")
           ];
         }
@@ -441,19 +449,6 @@ in
             (mkLuaInline "hl.dsp.window.fullscreen()")
           ];
         }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + P\"")
-            (mkLuaInline "hl.dsp.window.pseudo()")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + M\"")
-            (mkLuaInline "hl.dsp.exit()")
-          ];
-        }
-
         # Focus with vim keys
         {
           _args = [
@@ -480,7 +475,7 @@ in
           ];
         }
 
-        # Move the focused window with mod + SHIFT + vim keys
+        # Move window
         {
           _args = [
             (mkLuaInline "mod .. \" + SHIFT + H\"")
@@ -506,21 +501,7 @@ in
           ];
         }
 
-        # Scratchpad (special workspace)
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + S\"")
-            (mkLuaInline "hl.dsp.workspace.toggle_special('magic')")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + SHIFT + S\"")
-            (mkLuaInline "hl.dsp.window.move({ workspace = 'special:magic' })")
-          ];
-        }
-
-        # Cycle workspaces with mod + scroll
+        # Workspaces cycle
         {
           _args = [
             (mkLuaInline "mod .. \" + mouse_down\"")
@@ -534,7 +515,7 @@ in
           ];
         }
 
-        # Move / resize with mod + mouse
+        # Drag / resize
         {
           _args = [
             (mkLuaInline "mod .. \" + mouse:272\"")
@@ -550,7 +531,7 @@ in
           ];
         }
 
-        # Volume / brightness / media keys
+        # Media keys
         {
           _args = [
             "XF86AudioRaiseVolume"
@@ -640,7 +621,6 @@ in
           ];
         }
       ]
-      # Workspaces 1-10: mod + <n> to focus, mod + SHIFT + <n> to move there
       ++ lib.concatLists (
         lib.genList (
           i:
@@ -666,7 +646,6 @@ in
       );
 
       window_rule = [
-        # Fix some dragging issues with XWayland
         {
           match = {
             class = "^$";
@@ -678,7 +657,6 @@ in
           };
           no_focus = true;
         }
-        # Keep browser picture-in-picture windows floating
         {
           match = {
             class = "firefox";
