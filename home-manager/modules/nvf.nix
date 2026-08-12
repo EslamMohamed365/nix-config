@@ -4,7 +4,10 @@
   programs.nvf = {
     enable = true;
     settings.vim = {
-      useSystemClipboard = true;
+      clipboard = {
+        register = "unnamedplus";
+        providers.wl-copy.enable = true;
+      };
       # Built-in IDE features
       statusline.lualine.enable = true;
       telescope.enable = true; # Fuzzy finder
