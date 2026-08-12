@@ -44,6 +44,7 @@
     memoryPercent = 50;
   };
   programs = {
+    zsh.enable = true;
     hyprland = {
       enable = true;
     };
@@ -104,6 +105,7 @@
       # TODO: Change this password after first boot (passwd)
       initialPassword = "mypasswd";
       isNormalUser = true;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];

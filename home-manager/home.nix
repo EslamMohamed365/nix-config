@@ -29,8 +29,12 @@
     ./modules/firefox.nix
     ./modules/hyprland.nix
     ./modules/nvf.nix
+    ./modules/zsh.nix
   ];
   programs = {
+    starship = {
+      enable = true;
+    };
     fzf = {
       enable = true;
     };
