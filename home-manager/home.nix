@@ -16,9 +16,7 @@
       ripgrep
       fetch
       git-extras
-      fuzzel
       fd
-      fzf
       wl-clipboard-rs
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
@@ -33,6 +31,13 @@
     ./modules/nvf.nix
   ];
   programs = {
+    fzf = {
+      enable = true;
+    };
+
+    fuzzel = {
+      enable = true;
+    };
     gh = {
       enable = true;
     };
@@ -77,5 +82,8 @@
       flake = "/home/eslam/nix-config/"; # sets NH_OS_FLAKE variable for you
     };
     tealdeer.enable = true;
+  };
+  services = {
+    mako.enable = true;
   };
 }
