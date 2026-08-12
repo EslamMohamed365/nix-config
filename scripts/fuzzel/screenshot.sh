@@ -1,25 +1,30 @@
 #!/usr/bin/env bash
 
-# Output directory for screenshots
 SAVE_DIR="$HOME/Pictures/Screenshots"
 mkdir -p "$SAVE_DIR"
 
-# Define menu options for fuzzel
-declare -A OPTIONS=(
-  ["󰹑  Region (Save & Copy)"]="hyprshot -m region -o '$SAVE_DIR'"
-  ["󰍹  Active Monitor (Save & Copy)"]="hyprshot -m output -m active -o '$SAVE_DIR'"
-  ["󱂬  Active Window (Save & Copy)"]="hyprshot -m window -m active -o '$SAVE_DIR'"
-  ["󰒆  Select Window (Save & Copy)"]="hyprshot -m window -o '$SAVE_DIR'"
-  ["󰆞  Region (Clipboard Only)"]="hyprshot -m region --clipboard-only"
-  ["󰍹  Active Monitor (Clipboard Only)"]="hyprshot -m output -m active --clipboard-only"
-  ["󱂬  Active Window (Clipboard Only)"]="hyprshot -m window -m active --clipboard-only"
-  ["󰐃  Region (Freeze Screen)"]="hyprshot -m region -z -o '$SAVE_DIR'"
-)
+# Step 1: Select Target
+TARGET=$(printf "󰹑  Region\n󱂬  Active Window\n󰒆  Select Window\n󰍹  Active Monitor" | \
+  fuzzel --dmenu --prompt "󰄄 Target: ")
 
-# Format list for fuzzel
-CHOICE=$(printf '%s\n' "${!OPTIONS[@]}" | fuzzel --dmenu --prompt "󰄄 Screenshot: ")
+[ -z "$TARGET" ] && exit 0
 
-# Execute selected action
-if [[ -n "$CHOICE" && -n "${OPTIONS[$CHOICE]}" ]]; then
-    eval "${OPTIONS[$CHOICE]}"
-fi
+case "$TARGET" in
+  *"Region"*)        MODE="-m region -z" ;;
+  *"Active Window"*) MODE="-m window -m active" ;;
+  *"Select Window"*) MODE="-m window" ;;
+  *"Active Monitor"*)MODE="-m output -m active" ;;
+esac
+
+# Step 2: Select Action
+ACTION=$(printf "󰆐  Save & Copy\n󰅍  Clipboard Only\n󰏫  Edit (Swappy)" | \
+  fuzzel --dmenu --prompt "󰄄 Action: ")
+
+[ -z "$ACTION" ] && exit 0
+
+# Step 3: Run hyprshot
+case "$ACTION" in
+  *"Save & Copy"*)    hyprshot $MODE -s -o "$SAVE_DIR" ;;
+  *"Clipboard Only"*) hyprshot $MODE -s --clipboard-only ;;
+  *"Edit"*)           hyprshot $MODE -s -r | swappy -f - ;;
+esac
