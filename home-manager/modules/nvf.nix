@@ -5,7 +5,8 @@
     enable = true;
     settings.vim = {
       clipboard = {
-        register = "unnamedplus";
+        enable = true;
+        registers = "unnamedplus";
         providers.wl-copy.enable = true;
       };
       # Built-in IDE features
