@@ -16,7 +16,6 @@
         packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           bitwarden
           ublock-origin
-          stylus
           sponsorblock
           vimium
           youtube-shorts-block
@@ -27,8 +26,15 @@
         # DRM (Widevine) for streaming sites
         "media.eme.enabled" = true;
         "media.eme.require-app-approval" = false;
-        # Passwords
-        "signon.rememberSignons" = true;
+
+        # Disable Firefox Built-in Password Manager (Using Bitwarden instead)
+        "signon.rememberSignons" = false;
+        "signon.autofillForms" = false;
+        "signon.generation.enabled" = false;
+
+        # Disable Video Picture-in-Picture (Pop-out) Toggle
+        "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
+
         # Privacy
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;

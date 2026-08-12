@@ -5,10 +5,11 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     history.size = 10000;
-    ohMyZsh = {
+    oh-my-zsh = {
       enable = true;
       plugins = [
         "git"
+        "starship"
       ];
     };
 

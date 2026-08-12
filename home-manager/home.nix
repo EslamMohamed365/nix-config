@@ -18,6 +18,7 @@
       git-extras
       fd
       wl-clipboard-rs
+      pavucontrol
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
@@ -49,7 +50,7 @@
       enable = true;
       saveLocation = "$HOME/Pictures/Screenshots";
     };
-    waybar = {
+    ashell = {
       enable = true;
       systemd.enable = true;
     };
