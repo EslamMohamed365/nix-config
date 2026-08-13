@@ -59,6 +59,7 @@
   # Stylix theming
   stylix = {
     enable = true;
+    image = ../mountain-village.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     fonts = {
       serif = {

@@ -19,6 +19,7 @@
       fd
       wl-clipboard-rs
       pavucontrol
+      sxiv
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
@@ -90,9 +91,5 @@
   };
   services = {
     mako.enable = true;
-    hyprpaper = {
-      enable = true;
-      settings = { };
-    };
   };
 }
