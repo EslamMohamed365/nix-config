@@ -17,7 +17,7 @@
       fetch
       git-extras
       fd
-      wl-clipboard-rs
+      wl-clipboard
       pavucontrol
       sxiv
     ];
@@ -93,5 +93,8 @@
   };
   services = {
     mako.enable = true;
+    cliphist = {
+      enable = true;
+    };
   };
 }

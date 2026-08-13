@@ -9,7 +9,7 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
-
+    systemd.enable = false;
     package = null;
     portalPackage = null;
 
@@ -425,13 +425,19 @@ in
             (mkLuaInline "hl.dsp.exec_cmd('${config.home.homeDirectory}/nix-config/scripts/fuzzel/screenshot.sh')")
           ];
         }
-
         {
           _args = [
             (mkLuaInline "mod .. \" + D\"")
             (mkLuaInline "hl.dsp.exec_cmd(launcher)")
           ];
         }
+        {
+          _args = [
+            (mkLuaInline "mod .. \" + C\"")
+            (mkLuaInline "hl.dsp.exec_cmd('${config.home.homeDirectory}/nix-config/scripts/fuzzel/cliphist-fuzzel-img.sh')")
+          ];
+        }
+
         {
           _args = [
             (mkLuaInline "mod .. \" + B\"")

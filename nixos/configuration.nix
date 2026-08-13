@@ -30,7 +30,9 @@
   environment.systemPackages = with pkgs; [
     wget
   ];
-
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
   # Bootloader (UEFI)
   boot.loader = {
     systemd-boot.enable = true;
@@ -51,10 +53,16 @@
     zsh.enable = true;
     hyprland = {
       enable = true;
+      withUWSM = true; # recommended for most users
+      xwayland.enable = true; # Xwayland can be disabled.
     };
     ssh = {
       startAgent = true;
     };
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
   # Stylix theming
   stylix = {
