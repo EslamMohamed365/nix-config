@@ -99,15 +99,6 @@
   };
 
   services = {
-    openssh = {
-      enable = false;
-      settings = {
-        # Opinionated: forbid root login through SSH.
-        PermitRootLogin = "no";
-        # Key-based auth only; passwords disabled until authorizedKeys is populated.
-        PasswordAuthentication = false;
-      };
-    };
     displayManager.ly.enable = true;
     auto-cpufreq.enable = true;
   };
@@ -115,4 +106,3 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "26.11";
 }
-
