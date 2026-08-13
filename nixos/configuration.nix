@@ -27,6 +27,10 @@
     }
   ];
   time.timeZone = "Africa/Cairo";
+  environment.systemPackages = with pkgs; [
+    wget
+  ];
+
   # Bootloader (UEFI)
   boot.loader = {
     systemd-boot.enable = true;

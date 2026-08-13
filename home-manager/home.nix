@@ -90,5 +90,9 @@
   };
   services = {
     mako.enable = true;
+    hyprpaper = {
+      enable = true;
+      settings = { };
+    };
   };
 }
