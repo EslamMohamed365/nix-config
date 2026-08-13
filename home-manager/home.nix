@@ -33,6 +33,12 @@
     ./modules/zsh.nix
   ];
   programs = {
+    eza = {
+      enable = true;
+      enableZshIntegration = true;
+      icons = "auto";
+      git = true;
+    };
     starship = {
       enable = true;
     };

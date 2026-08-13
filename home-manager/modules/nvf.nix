@@ -3,6 +3,7 @@
 
   programs.nvf = {
     enable = true;
+    defaultEditor = true;
     settings.vim = {
       clipboard = {
         enable = true;

@@ -12,6 +12,36 @@
     };
     profiles.eslam = {
       id = 0;
+      search = {
+        force = true;
+        default = "Google";
+        order = [
+          "Google"
+          "Searchix"
+        ];
+        engines = {
+          "Searchix" = {
+            urls = [
+              {
+                template = "https://searchix.ovh/";
+                params = [
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            iconUpdateURL = "https://searchix.ovh/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [
+              "@sx"
+              "@searchix"
+            ];
+          };
+          "Google".metaData.hidden = false;
+        };
+      };
       extensions = {
         packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           bitwarden
@@ -23,19 +53,20 @@
       };
       settings = {
         "extensions.autoDisableScopes" = 0;
-        # DRM (Widevine) for streaming sites
+
+        "network.trr.mode" = 2;
+        "network.trr.uri" = "https://dns.quad9.net/dns-query";
+        "network.trr.custom_uri" = "https://dns.quad9.net/dns-query";
+
         "media.eme.enabled" = true;
         "media.eme.require-app-approval" = false;
 
-        # Disable Firefox Built-in Password Manager (Using Bitwarden instead)
         "signon.rememberSignons" = false;
         "signon.autofillForms" = false;
         "signon.generation.enabled" = false;
 
-        # Disable Video Picture-in-Picture (Pop-out) Toggle
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
 
-        # Privacy
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
         "privacy.trackingprotection.cryptomining.enabled" = true;
@@ -46,7 +77,6 @@
         "privacy.clearOnShutdown.history" = true;
         "privacy.sanitize.sanitizeOnShutdown.enabled" = true;
 
-        # Telemetry and data collection
         "toolkit.telemetry.enabled" = false;
         "toolkit.telemetry.unified" = false;
         "datareporting.healthreport.uploadEnabled" = false;
@@ -56,10 +86,8 @@
         "app.normandy.enabled" = false;
         "app.shield.optoutstudies.enabled" = false;
 
-        # Pocket
         "extensions.pocket.enabled" = false;
 
-        # UI
         "browser.uidensity" = 1;
         "browser.compactmode.show" = true;
         "browser.tabs.warnOnClose" = false;
@@ -69,7 +97,6 @@
         "browser.disableResetPrompt" = true;
         "browser.shell.checkDefaultBrowser" = false;
 
-        # Search and new tab
         "browser.search.suggest.enabled" = false;
         "browser.urlbar.suggest.quicksuggest.sponsored" = false;
         "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
@@ -80,7 +107,6 @@
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
 
-        # Performance
         "general.smoothScroll" = true;
         "browser.tabs.unloadOnLowMemory" = true;
       };

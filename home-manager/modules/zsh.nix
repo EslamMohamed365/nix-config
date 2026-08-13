@@ -4,12 +4,18 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    history.size = 10000;
     oh-my-zsh = {
       enable = true;
       plugins = [
         "git"
         "starship"
+        "git-extras"
+        "copybuffer"
+        "copyfile"
+        "copypath"
+        "cp"
+        "extract"
+        "eza"
       ];
     };
 
