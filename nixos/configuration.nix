@@ -101,6 +101,9 @@
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry
       flake-registry = "";
+      substituters = [
+        "https://cache.nixos.org"
+      ];
     };
     # Opinionated: disable channels
     channel.enable = false;
@@ -137,9 +140,8 @@
         PasswordAuthentication = true;
       };
     };
-    displayManager.ly = {
-      enable = true;
-    };
+    displayManager.ly.enable = true;
+    auto-cpufreq.enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

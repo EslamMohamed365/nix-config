@@ -106,8 +106,6 @@
   };
   services = {
     mako.enable = true;
-    cliphist = {
-      enable = true;
-    };
+    cliphist.enable = true;
   };
 }
