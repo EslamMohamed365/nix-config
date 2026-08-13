@@ -19,6 +19,7 @@
       fd
       wl-clipboard
       pavucontrol
+      skills
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
@@ -38,6 +39,13 @@
       enableZshIntegration = true;
       icons = "auto";
       git = true;
+    };
+    zoxide = {
+      enable = true;
+      options = [
+        "--cmd cd"
+      ];
+      enableZshIntegration = true;
     };
     starship = {
       enable = true;
