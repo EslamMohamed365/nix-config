@@ -68,12 +68,12 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     fonts = {
       serif = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font";
+        package = pkgs.noto-fonts;
+        name = "Noto Serif";
       };
       sansSerif = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font";
+        package = pkgs.inter;
+        name = "Inter";
       };
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
