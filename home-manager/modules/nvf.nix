@@ -15,7 +15,10 @@
       telescope.enable = true; # Fuzzy finder
       autocomplete.nvim-cmp.enable = true; # Autocompletion
       filetree.neo-tree.enable = true; # File explorer
-      binds.whichKey.enable = true; # Keybinding hints
+      binds = {
+        whichKey.enable = true;
+        hardtime-nvim.enable = true;
+      };
 
       # Core editor ergonomics
       undoFile.enable = true; # Persistent undo across restarts
