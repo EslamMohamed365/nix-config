@@ -26,7 +26,7 @@
       };
     }
   ];
-
+  time.timeZone = "Africa/Cairo";
   # Bootloader (UEFI)
   boot.loader = {
     systemd-boot.enable = true;
