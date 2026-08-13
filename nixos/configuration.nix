@@ -13,7 +13,6 @@
     # hardware-configuration.nix for mounting)
     inputs.disko.nixosModules.disko
     ../disko-config.nix
-    ./hardware-configuration.nix
     # NixOS-integrated Home Manager (useGlobalPkgs = true)
     inputs.home-manager.nixosModules.home-manager
     {
