@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   ...
 }:
 let
@@ -417,6 +418,14 @@ in
             (mkLuaInline "hl.dsp.exec_cmd(terminal)")
           ];
         }
+        # Screenshot bind: Print screen only (without Super/mod modifier)
+        {
+          _args = [
+            "Print"
+            (mkLuaInline "hl.dsp.exec_cmd('${config.home.homeDirectory}/nix-config/scripts/fuzzel/screenshot.sh')")
+          ];
+        }
+
         {
           _args = [
             (mkLuaInline "mod .. \" + D\"")
