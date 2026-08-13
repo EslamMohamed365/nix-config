@@ -31,6 +31,7 @@
   ];
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    FLAKE = "/home/eslam/nix-config";
   };
   # Bootloader (UEFI)
   boot.loader = {
