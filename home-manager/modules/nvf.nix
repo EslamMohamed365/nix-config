@@ -47,6 +47,7 @@
         markdown.enable = true;
         bash.enable = true;
         lua.enable = true;
+        json.enable = true;
       };
     };
   };
