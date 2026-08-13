@@ -14,6 +14,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     # NVF
     nvf.url = "github:notashelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
     # Stylix
     stylix = {
       url = "github:nix-community/stylix";
