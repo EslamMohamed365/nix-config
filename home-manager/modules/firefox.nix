@@ -14,9 +14,9 @@
       id = 0;
       search = {
         force = true;
-        default = "Google";
+        default = "google";
         order = [
-          "Google"
+          "google"
           "Searchix"
         ];
         engines = {
@@ -32,18 +32,18 @@
                 ];
               }
             ];
-            iconUpdateURL = "https://searchix.ovh/favicon.ico";
+            icon = "https://searchix.ovh/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = [
               "@sx"
               "@searchix"
             ];
           };
-          "Google".metaData.hidden = false;
+          "google".metaData.hidden = false;
         };
       };
       extensions = {
-        packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+        packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
           bitwarden
           ublock-origin
           sponsorblock
