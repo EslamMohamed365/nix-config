@@ -84,8 +84,8 @@
 
   users.users = {
     eslam = {
-      # TODO: Change this password after first boot (passwd)
-      initialPassword = "mypasswd";
+      # Set with `passwd` after first boot
+      initialHashedPassword = "$6$CQ.mis4Z5gINcCEQ$D5dang2V6CE3x4aL9z5NPrwPb7vUddFJPjQoYjW3KVbxnHLDO6btRgSNlaNIu18x9.lOXnIvEPQYS4Hri5E3k1";
       isNormalUser = true;
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
@@ -100,13 +100,12 @@
 
   services = {
     openssh = {
-      enable = true;
+      enable = false;
       settings = {
         # Opinionated: forbid root login through SSH.
         PermitRootLogin = "no";
-        # Passwords enabled so you can log in until you add your SSH keys.
-        # Switch to false once authorizedKeys.keys is populated.
-        PasswordAuthentication = true;
+        # Key-based auth only; passwords disabled until authorizedKeys is populated.
+        PasswordAuthentication = false;
       };
     };
     displayManager.ly.enable = true;
@@ -116,3 +115,4 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "26.11";
 }
+
