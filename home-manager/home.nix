@@ -61,7 +61,9 @@
     ssh = {
       enable = true;
     };
-
+    satty = {
+      enable = true;
+    };
     kitty = {
       enable = true;
     };

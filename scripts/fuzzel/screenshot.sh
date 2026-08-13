@@ -17,14 +17,17 @@ case "$TARGET" in
 esac
 
 # Step 2: Select Action
-ACTION=$(printf "󰆐  Save & Copy\n󰅍  Clipboard Only\n󰏫  Edit (Swappy)" | \
+ACTION=$(printf "󰆐  Save & Copy\n󰅍  Clipboard Only\n󰏫  Edit (Satty)" | \
   fuzzel --dmenu --prompt "󰄄 Action: ")
 
 [ -z "$ACTION" ] && exit 0
+
+# Delay 1 second for fuzzel to close
+sleep 0.25
 
 # Step 3: Run hyprshot
 case "$ACTION" in
   *"Save & Copy"*)    hyprshot $MODE -s -o "$SAVE_DIR" ;;
   *"Clipboard Only"*) hyprshot $MODE -s --clipboard-only ;;
-  *"Edit"*)           hyprshot $MODE -s -r | swappy -f - ;;
+  *"Edit"*)           hyprshot $MODE --raw -s | satty --filename - ;;
 esac
