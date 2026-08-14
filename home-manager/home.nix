@@ -41,10 +41,17 @@
     mpv.enable = true;
     opencode.enable = true;
     lazygit.enable = true;
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      historyWidget.zsh.command = "";
+    };
     fuzzel.enable = true;
     gh.enable = true;
     tealdeer.enable = true;
+    atuin = {
+      enable = true;
+      daemon.enable = true;
+    };
     btop = {
       enable = true;
       settings = {
