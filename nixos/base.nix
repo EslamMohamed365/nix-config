@@ -93,6 +93,11 @@
       flake-registry = "";
       substituters = [
         "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CXWu8QeRODUq2nBLU="
       ];
     };
     channel.enable = false;
@@ -103,7 +108,7 @@
   users.users = {
     eslam = {
       # Set with `passwd` after first boot
-      initialHashedPassword = "$6$CQ.mis4Z5gINcCEQ$D5dang2V6CE3x4aL9z5NPrwPb7vUddFJPjQoYjW3KVbxnHLDO6btRgSNlaNIu18x9.lOXnIvEPQYS4Hri5E3k1";
+      initialPassword = "mypasswd";
       isNormalUser = true;
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
