@@ -12,6 +12,7 @@
   home = {
     username = "eslam";
     homeDirectory = "/home/eslam";
+    shell.enableZshIntegration = true;
     packages = with pkgs; [
       ripgrep
       fetch
@@ -34,9 +35,26 @@
     ./modules/zsh.nix
   ];
   programs = {
+    starship.enable = true;
+    satty.enable = true;
+    kitty.enable = true;
+    mpv.enable = true;
+    opencode.enable = true;
+    lazygit.enable = true;
+    fzf.enable = true;
+    fuzzel.enable = true;
+    gh.enable = true;
+    tealdeer.enable = true;
+    btop = {
+      enable = true;
+      settings = {
+        vim_keys = true;
+        rounded_corners = true;
+        terminal_sync = true;
+      };
+    };
     eza = {
       enable = true;
-      enableZshIntegration = true;
       icons = "auto";
       git = true;
     };
@@ -45,20 +63,6 @@
       options = [
         "--cmd cd"
       ];
-      enableZshIntegration = true;
-    };
-    starship = {
-      enable = true;
-    };
-    fzf = {
-      enable = true;
-    };
-
-    fuzzel = {
-      enable = true;
-    };
-    gh = {
-      enable = true;
     };
     hyprshot = {
       enable = true;
@@ -87,20 +91,6 @@
         ControlPersist = "no";
       };
     };
-    satty = {
-      enable = true;
-    };
-    kitty = {
-      enable = true;
-    };
-    mpv = {
-      enable = true;
-    };
-    opencode.enable = true;
-    lazygit = {
-      enable = true;
-      shellWrapperName = "lg";
-    };
     git = {
       enable = true;
       settings = {
@@ -115,7 +105,6 @@
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "${config.home.homeDirectory}/nix-config"; # sets NH_OS_FLAKE variable for you
     };
-    tealdeer.enable = true;
   };
   services = {
     mako.enable = true;

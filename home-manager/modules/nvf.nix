@@ -5,6 +5,7 @@
     enable = true;
     defaultEditor = true;
     settings.vim = {
+      mini.move.enable = true;
       clipboard = {
         enable = true;
         registers = "unnamedplus";

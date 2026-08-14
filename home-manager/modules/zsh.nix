@@ -16,6 +16,7 @@
         "cp"
         "extract"
         "eza"
+        "kitty"
       ];
     };
 
