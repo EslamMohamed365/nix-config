@@ -69,6 +69,8 @@ in
         decoration = {
           rounding = 10;
           rounding_power = 2;
+          active_opacity = 0.9;
+          inactive_opacity = 0.7;
           shadow = {
             enabled = true;
             range = 30;
@@ -77,8 +79,10 @@ in
 
           blur = {
             enabled = true;
-            size = 3;
-            passes = 1;
+            size = 5;
+            passes = 2;
+            ignore_opacity = true; # blur stays strong on transparent windows
+            xray = true; # floating windows blur only what's behind them
             vibrancy = 0.1696;
           };
         };
