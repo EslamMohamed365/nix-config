@@ -98,9 +98,18 @@
     };
   };
 
+  security.rtkit.enable = true;
   services = {
     displayManager.ly.enable = true;
     auto-cpufreq.enable = true;
+    pipewire = {
+      enable = true; # if not already enabled
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment the following
+      #jack.enable = true;
+    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
