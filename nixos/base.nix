@@ -8,6 +8,7 @@
 {
   time.timeZone = "Africa/Cairo";
   environment.systemPackages = with pkgs; [
+    ntfs3g
     wget
   ];
   environment.sessionVariables = {
