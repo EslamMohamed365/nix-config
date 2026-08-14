@@ -49,6 +49,7 @@
       enable = true;
       settings = {
         vim_keys = true;
+        transparency = false;
         rounded_corners = true;
         terminal_sync = true;
       };

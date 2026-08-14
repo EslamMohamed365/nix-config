@@ -7,9 +7,6 @@ let
   inherit (lib.generators) mkLuaInline;
 in
 {
-  # xdph: DMA-BUF allocation fails on this multi-GPU (AMD+NVIDIA) laptop,
-  # causing screenshare sessions to churn and crash Firefox's WebRTC process.
-  # force_shm sidesteps DMA-BUF entirely (SHM is slower but stable here).
   xdg.configFile."hypr/xdph.conf".text = ''
     screencopy {
         force_shm = true
