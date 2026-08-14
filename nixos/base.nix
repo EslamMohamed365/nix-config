@@ -38,10 +38,21 @@
     enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
-  # Stylix theming
   stylix = {
     enable = true;
     image = ../walls/mountain-village.png;
+    opacity = {
+      applications = 0.85;
+      terminal = 0.75;
+      desktop = 0.80;
+      popups = 0.80;
+    };
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
+    polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     fonts = {
       serif = {

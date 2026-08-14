@@ -53,6 +53,10 @@ in
 
       # Config table
       config = {
+        cursor = {
+          no_hardware_cursors = true;
+        };
+
         general = {
           gaps_in = 5;
           gaps_out = 12;
