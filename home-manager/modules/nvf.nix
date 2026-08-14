@@ -23,7 +23,6 @@
       # --- Fuzzy finder (default binds: <leader>ff/fg/fb/fh/fr) ---
       telescope.enable = true;
       autocomplete.nvim-cmp.enable = true; # Autocompletion
-      filetree.neo-tree.enable = true; # File explorer
       binds = {
         whichKey.enable = true;
         hardtime-nvim.enable = true; # No repeating j/k; forces heading-style motion
@@ -47,7 +46,6 @@
       comments.comment-nvim.enable = true; # gc to comment lines/blocks
       terminal.toggleterm.enable = true; # Better integrated terminal
       utility.oil-nvim.enable = true; # Modern file manager
-      utility.surround.enable = true; # ys/cs/ds to edit surrounding pairs
       notes.todo-comments.enable = true; # Highlight TODO/FIXME/HACK
 
       # Language Servers & Treesitter
@@ -73,4 +71,3 @@
     };
   };
 }
-
