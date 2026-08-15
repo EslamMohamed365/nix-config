@@ -1,14 +1,10 @@
 # This is your home-manager configuration file
 # Used via the NixOS-integrated module (home-manager.users.eslam)
 {
-  inputs,
-  lib,
   config,
   pkgs,
   ...
-}:
-{
-
+}: {
   home = {
     username = "eslam";
     homeDirectory = "/home/eslam";
@@ -29,7 +25,7 @@
     stateVersion = "26.05";
   };
   stylix = {
-    targets.firefox.profileNames = [ "eslam" ];
+    targets.firefox.profileNames = ["eslam"];
   };
   imports = [
     ./modules/firefox.nix
@@ -38,6 +34,7 @@
     ./modules/zsh.nix
   ];
   programs = {
+    flake-edit.enable = true;
     starship.enable = true;
     satty.enable = true;
     kitty.enable = true;

@@ -1,7 +1,6 @@
 # Shared configuration for all hosts.
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -9,6 +8,7 @@
   environment.systemPackages = with pkgs; [
     ntfs3g
     wget
+    deadnix
   ];
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -88,6 +88,7 @@
   };
 
   nix = {
+    package = pkgs.lix;
     settings = {
       experimental-features = ["nix-command" "flakes"];
       flake-registry = "";

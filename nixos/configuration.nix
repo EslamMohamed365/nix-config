@@ -2,12 +2,8 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
-  lib,
-  config,
-  pkgs,
   ...
-}:
-{
+}: {
   imports = [
     # Shared configuration across hosts
     ./base.nix
@@ -22,7 +18,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         users.eslam = import ../home-manager/home.nix;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         backupFileExtension = "-bak";
       };
     }

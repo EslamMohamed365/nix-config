@@ -28,9 +28,7 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
-    home-manager,
     stylix,
     ...
   } @ inputs: let
