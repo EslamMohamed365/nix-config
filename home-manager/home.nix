@@ -29,6 +29,7 @@
   };
   imports = [
     ./modules/firefox.nix
+    ./modules/tmux.nix
     ./modules/hyprland.nix
     ./modules/nvf.nix
     ./modules/yazi.nix
