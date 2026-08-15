@@ -68,7 +68,11 @@
 
         # Languages that will be supported in default and maximal configurations.
         nix.enable = true;
-        markdown.enable = true;
+        markdown = {
+          enable = true;
+          # Inline rendering of headings, lists, code blocks etc. in-buffer.
+          extensions.render-markdown-nvim.enable = true;
+        };
 
         # Languages that are enabled in the maximal configuration.
         bash.enable = true;

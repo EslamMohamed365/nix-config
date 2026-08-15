@@ -31,6 +31,7 @@
     ./modules/firefox.nix
     ./modules/hyprland.nix
     ./modules/nvf.nix
+    ./modules/yazi.nix
     ./modules/zsh.nix
   ];
   programs = {
@@ -72,9 +73,6 @@
     ashell = {
       enable = true;
       systemd.enable = true;
-    };
-    yazi = {
-      enable = true;
     };
     ssh = {
       enable = true;
