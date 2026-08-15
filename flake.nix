@@ -27,33 +27,30 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      stylix,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-    in
-    {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild switch --flake .#nix-btw'
-      # or during install: 'nixos-install --flake .#nix-btw'
-      nixosConfigurations = {
-        nix-btw = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          # > Our main nixos configuration file <
-          modules = [
-            stylix.nixosModules.stylix
-            "${nixpkgs}/nixos/modules/hardware/facter"
-            ./nixos/configuration.nix
-            { hardware.facter.reportPath = ./facter.json; }
-          ];
-        };
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    stylix,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+  in {
+    # NixOS configuration entrypoint
+    # Available through 'nixos-rebuild switch --flake .#nix-btw'
+    # or during install: 'nixos-install --flake .#nix-btw'
+    nixosConfigurations = {
+      nix-btw = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs;};
+        # > Our main nixos configuration file <
+        modules = [
+          stylix.nixosModules.stylix
+          "${nixpkgs}/nixos/modules/hardware/facter"
+          ./nixos/configuration.nix
+          {hardware.facter.reportPath = ./facter.json;}
+        ];
       };
     };
+  };
 }

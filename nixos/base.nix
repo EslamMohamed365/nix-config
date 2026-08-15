@@ -4,8 +4,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   time.timeZone = "Africa/Cairo";
   environment.systemPackages = with pkgs; [
     ntfs3g
@@ -15,9 +14,9 @@
     NIXOS_OZONE_WL = "1";
     FLAKE = "${config.users.users.eslam.home}/nix-config";
   };
-  hardware = {
-    enableAllFirmware = true;
-  };
+  # hardware = {
+  #   enableAllFirmware = true;
+  # };
   zramSwap = {
     enable = true;
     priority = 100;
@@ -37,7 +36,7 @@
   };
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+    extraPortals = with pkgs; [xdg-desktop-portal-hyprland];
   };
   stylix = {
     enable = true;
@@ -90,15 +89,17 @@
 
   nix = {
     settings = {
-      experimental-features = "nix-command flakes";
+      experimental-features = ["nix-command" "flakes"];
       flake-registry = "";
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
+        "https://nvf.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CXWu8QeRODUq2nBLU="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nvf.cachix.org-1:GMQWiUhZ6ux9D5CvFFMwnc2nFrUHTeGaXRlVBXo+naI="
       ];
     };
     channel.enable = false;
@@ -108,13 +109,10 @@
 
   users.users = {
     eslam = {
-      # Set with `passwd` after first boot
+      #TODO: Set with `passwd` after first boot
       initialPassword = "mypasswd";
       isNormalUser = true;
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
       extraGroups = [
         "wheel"
         "networkmanager"
