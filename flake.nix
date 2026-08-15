@@ -49,7 +49,9 @@
           # > Our main nixos configuration file <
           modules = [
             stylix.nixosModules.stylix
+            "${nixpkgs}/nixos/modules/hardware/facter"
             ./nixos/configuration.nix
+            { hardware.facter.reportPath = ./facter.json; }
           ];
         };
       };
