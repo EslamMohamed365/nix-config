@@ -1,5 +1,8 @@
-{
+{pkgs, ...}: {
   programs.zsh = {
+    initExtra = ''
+      eval "$(${pkgs.devenv}/bin/devenv hook zsh)"
+    '';
     enable = true;
     shellAliases = {
       v = "nvim";
