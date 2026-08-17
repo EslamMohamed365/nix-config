@@ -6,12 +6,14 @@
   ...
 }: let
   quranDownloader = pkgs.callPackage ../scripts/quranDownloader.nix {};
+  pq = pkgs.callPackage ../scripts/pq.nix {};
 in {
   home = {
     username = "eslam";
     homeDirectory = "/home/eslam";
     shell.enableZshIntegration = true;
     packages = with pkgs; [
+      pq
       quranDownloader
       ripgrep
       fetch

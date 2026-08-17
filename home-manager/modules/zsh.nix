@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -6,7 +6,6 @@
       vf = "nvim $(fzf)";
       nos = "nh os switch";
       nclean = "nh clean all --optimise -k 3";
-      pq = "~/quran/play_quran_random.sh";
     };
     enableCompletion = true;
     autosuggestion.enable = true;
@@ -21,7 +20,6 @@
         "copyfile"
         "copypath"
         "cp"
-        "extract"
         "eza"
         "kitty"
         "tmux"
