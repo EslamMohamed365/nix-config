@@ -4,12 +4,15 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  quranDownloader = pkgs.callPackage ../scripts/quranDownloader.nix {};
+in {
   home = {
     username = "eslam";
     homeDirectory = "/home/eslam";
     shell.enableZshIntegration = true;
     packages = with pkgs; [
+      quranDownloader
       ripgrep
       fetch
       git-extras
