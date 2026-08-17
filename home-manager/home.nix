@@ -41,6 +41,7 @@ in {
     ./modules/zsh.nix
   ];
   programs = {
+    devenv.enable = true;
     flake-edit.enable = true;
     starship.enable = true;
     satty.enable = true;
@@ -52,6 +53,10 @@ in {
     fuzzel.enable = true;
     gh.enable = true;
     tealdeer.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     btop = {
       enable = true;
       settings = {
