@@ -30,7 +30,17 @@
         enableTreesitter = true;
         enableExtraDiagnostics = true;
 
-        nix.enable = true;
+        nix = {
+          enable = true;
+          lsp = {
+            enable = true;
+            servers = ["nixd"];
+          };
+          format = {
+            enable = true;
+            type = ["alejandra"];
+          };
+        };
         bash.enable = true;
         lua.enable = true;
         json.enable = true;
