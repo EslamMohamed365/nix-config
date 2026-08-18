@@ -55,14 +55,12 @@ in {
     fuzzel = {
       enable = true;
       settings = {
-        key-bindings = {
-          cursor-down = "Control+j Down";
-          cursor-up = "Control+k Up";
-
-          cursor-left = "Control+h Left";
-          cursor-right = "Control+l Right";
-          delete-prev-word = "Control+w";
-          cancel = "Escape Control+bracketleft Control+c";
+        "key-bindings" = {
+          delete-line-forward = "none";
+          next = "Down Control+j Control+n";
+          prev = "Up Control+k Control+p";
+          cursor-left = "Left Control+h";
+          cursor-right = "Right Control+l";
         };
       };
     };
