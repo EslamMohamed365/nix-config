@@ -50,9 +50,22 @@ in {
     opencode.enable = true;
     lazygit.enable = true;
     fzf.enable = true;
-    fuzzel.enable = true;
     gh.enable = true;
     tealdeer.enable = true;
+    fuzzel = {
+      enable = true;
+      settings = {
+        key-bindings = {
+          cursor-down = "Control+j Down";
+          cursor-up = "Control+k Up";
+
+          cursor-left = "Control+h Left";
+          cursor-right = "Control+l Right";
+          delete-prev-word = "Control+w";
+          cancel = "Escape Control+bracketleft Control+c";
+        };
+      };
+    };
     btop = {
       enable = true;
       settings = {

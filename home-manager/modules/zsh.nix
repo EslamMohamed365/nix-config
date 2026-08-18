@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.zsh = {
-    initExtra = ''
+    initContent = ''
       eval "$(${pkgs.devenv}/bin/devenv hook zsh)"
     '';
     enable = true;
