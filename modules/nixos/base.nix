@@ -14,9 +14,6 @@
     NIXOS_OZONE_WL = "1";
     FLAKE = "${config.users.users.eslam.home}/nix-config";
   };
-  # hardware = {
-  #   enableAllFirmware = true;
-  # };
   zramSwap = {
     enable = true;
     priority = 100;
@@ -43,11 +40,10 @@
     icons = {
       package = pkgs.gruvbox-plus-icons;
       enable = true;
-      # stylix >= 2511 no longer derives the theme name from the package
       dark = "Gruvbox-Plus-Dark";
       light = "Gruvbox-Plus-Light";
     };
-    image = ../walls/mountain-village.png;
+    image = ../../walls/mountain-village.png;
     opacity = {
       applications = 0.85;
       terminal = 0.75;

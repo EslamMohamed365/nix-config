@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: let
-  quranDownloader = pkgs.callPackage ../scripts/quranDownloader.nix {};
-  pq = pkgs.callPackage ../scripts/pq.nix {};
+  quranDownloader = pkgs.callPackage ../../scripts/quranDownloader.nix {};
+  pq = pkgs.callPackage ../../scripts/pq.nix {};
 in {
   home = {
     username = "eslam";
@@ -34,12 +34,12 @@ in {
     targets.firefox.profileNames = ["eslam"];
   };
   imports = [
-    ./modules/firefox.nix
-    ./modules/tmux.nix
-    ./modules/hyprland.nix
-    ./modules/nvf.nix
-    ./modules/yazi.nix
-    ./modules/zsh.nix
+    ./firefox.nix
+    ./tmux.nix
+    ./hyprland.nix
+    ./nvf.nix
+    ./yazi.nix
+    ./zsh.nix
   ];
   programs = {
     devenv.enable = true;
