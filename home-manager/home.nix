@@ -14,6 +14,7 @@ in {
     shell.enableZshIntegration = true;
     packages = with pkgs; [
       pq
+      ytdownloader
       quranDownloader
       ripgrep
       fetch
@@ -52,6 +53,11 @@ in {
     fzf.enable = true;
     gh.enable = true;
     tealdeer.enable = true;
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      enableJujutsuIntegration = true;
+    };
     fuzzel = {
       enable = true;
       settings = {
