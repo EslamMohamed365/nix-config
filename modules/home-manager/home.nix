@@ -43,7 +43,6 @@ in {
   ];
   programs = {
     devenv.enable = true;
-    flake-edit.enable = true;
     starship.enable = true;
     satty.enable = true;
     kitty.enable = true;
@@ -53,11 +52,6 @@ in {
     fzf.enable = true;
     gh.enable = true;
     tealdeer.enable = true;
-    delta = {
-      enable = true;
-      enableGitIntegration = true;
-      enableJujutsuIntegration = true;
-    };
     fuzzel = {
       enable = true;
       settings = {

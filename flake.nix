@@ -1,6 +1,4 @@
 {
-  description = "eslam's NixOS configuration";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -33,19 +31,24 @@
     };
   };
 
-  outputs = inputs@{ flake-parts, nixpkgs, stylix, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
+  outputs = inputs @ {
+    flake-parts,
+    nixpkgs,
+    stylix,
+    ...
+  }:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
 
       flake.nixosConfigurations = {
         nix-btw = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {inherit inputs;};
           modules =
             [
               stylix.nixosModules.stylix
               "${nixpkgs}/nixos/modules/hardware/facter"
-              { hardware.facter.reportPath = ./facter.json; }
+              {hardware.facter.reportPath = ./facter.json;}
             ]
             ++ (inputs.import-tree ./modules/nixos).imports;
         };
