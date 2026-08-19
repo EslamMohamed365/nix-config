@@ -44,6 +44,7 @@
         bash.enable = true;
         lua.enable = true;
         json.enable = true;
+        yaml.enable = true;
         markdown = {
           enable = true;
           extensions.render-markdown-nvim.enable = true;
