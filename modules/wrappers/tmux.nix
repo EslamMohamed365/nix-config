@@ -9,7 +9,7 @@
   modeKeys = "vi";
   mouse = true;
   escapeTime = 0;
-  terminal = "tmux-256color";
+  terminal = "screen-256color";
   clock24 = true;
   vimVisualKeys = true;
   configAfter = ''
