@@ -29,16 +29,26 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wrappers = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     flake-parts,
     nixpkgs,
     stylix,
+    wrappers,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
+
+      imports = [wrappers.flakeModules.wrappers];
+
+      flake.wrappers.tmux = import ./modules/wrappers/tmux.nix;
 
       flake.nixosConfigurations = {
         nix-btw = nixpkgs.lib.nixosSystem {
