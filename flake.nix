@@ -49,7 +49,8 @@
       imports = [wrappers.flakeModules.wrappers];
 
       perSystem = { pkgs, ... }: {
-        packages.neovim = (import ./modules/wrappers/nvf-standalone.nix {
+        packages.neovim = pkgs.callPackage ./modules/wrappers/nvim.nix {};
+        packages.nvf = (import ./modules/wrappers/nvf.nix {
           inherit pkgs;
           nvf = inputs.nvf;
         }).neovim;
