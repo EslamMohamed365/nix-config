@@ -48,6 +48,10 @@
 
       imports = [wrappers.flakeModules.wrappers];
 
+      perSystem = { pkgs, ... }: {
+        packages.neovim = pkgs.callPackage ./modules/wrappers/nvim.nix {};
+      };
+
       flake.wrappers.tmux = import ./modules/wrappers/tmux.nix;
 
       flake.nixosConfigurations = {

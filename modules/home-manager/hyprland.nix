@@ -2,16 +2,14 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   inherit (lib.generators) mkLuaInline;
-in
-{
-  xdg.configFile."hypr/xdph.conf".text = ''
-    screencopy {
-        force_shm = true
-    }
-  '';
+in {
+  # xdg.configFile."hypr/xdph.conf".text = ''
+  #   screencopy {
+  #       force_shm = true
+  #   }
+  # '';
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
@@ -421,254 +419,254 @@ in
       ];
 
       # Binds
-      bind = [
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + RETURN\"")
-            (mkLuaInline "hl.dsp.exec_cmd(terminal)")
-          ];
-        }
-        # Screenshot bind: Print screen only (without Super/mod modifier)
-        {
-          _args = [
-            "Print"
-            (mkLuaInline "hl.dsp.exec_cmd('${config.home.homeDirectory}/nix-config/scripts/fuzzel/screenshot.sh')")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + D\"")
-            (mkLuaInline "hl.dsp.exec_cmd(launcher)")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + C\"")
-            (mkLuaInline "hl.dsp.exec_cmd('${config.home.homeDirectory}/nix-config/scripts/fuzzel/cliphist-fuzzel-img.sh')")
-          ];
-        }
+      bind =
+        [
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + RETURN\"")
+              (mkLuaInline "hl.dsp.exec_cmd(terminal)")
+            ];
+          }
+          # Screenshot bind: Print screen only (without Super/mod modifier)
+          {
+            _args = [
+              "Print"
+              (mkLuaInline "hl.dsp.exec_cmd('${config.home.homeDirectory}/nix-config/scripts/fuzzel/screenshot.sh')")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + D\"")
+              (mkLuaInline "hl.dsp.exec_cmd(launcher)")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + C\"")
+              (mkLuaInline "hl.dsp.exec_cmd('${config.home.homeDirectory}/nix-config/scripts/fuzzel/cliphist-fuzzel-img.sh')")
+            ];
+          }
 
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + B\"")
-            (mkLuaInline "hl.dsp.exec_cmd(browser)")
-          ];
-        }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + B\"")
+              (mkLuaInline "hl.dsp.exec_cmd(browser)")
+            ];
+          }
 
-        # Window management
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + Q\"")
-            (mkLuaInline "hl.dsp.window.close()")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + V\"")
-            (mkLuaInline "hl.dsp.window.float({ action = 'toggle' })")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + F\"")
-            (mkLuaInline "hl.dsp.window.fullscreen()")
-          ];
-        }
-        # Focus with vim keys
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + H\"")
-            (mkLuaInline "hl.dsp.focus({ direction = 'l' })")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + L\"")
-            (mkLuaInline "hl.dsp.focus({ direction = 'r' })")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + K\"")
-            (mkLuaInline "hl.dsp.focus({ direction = 'u' })")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + J\"")
-            (mkLuaInline "hl.dsp.focus({ direction = 'd' })")
-          ];
-        }
+          # Window management
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + Q\"")
+              (mkLuaInline "hl.dsp.window.close()")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + V\"")
+              (mkLuaInline "hl.dsp.window.float({ action = 'toggle' })")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + F\"")
+              (mkLuaInline "hl.dsp.window.fullscreen()")
+            ];
+          }
+          # Focus with vim keys
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + H\"")
+              (mkLuaInline "hl.dsp.focus({ direction = 'l' })")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + L\"")
+              (mkLuaInline "hl.dsp.focus({ direction = 'r' })")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + K\"")
+              (mkLuaInline "hl.dsp.focus({ direction = 'u' })")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + J\"")
+              (mkLuaInline "hl.dsp.focus({ direction = 'd' })")
+            ];
+          }
 
-        # Move window
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + SHIFT + H\"")
-            (mkLuaInline "hl.dsp.window.move({ direction = 'l' })")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + SHIFT + L\"")
-            (mkLuaInline "hl.dsp.window.move({ direction = 'r' })")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + SHIFT + K\"")
-            (mkLuaInline "hl.dsp.window.move({ direction = 'u' })")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + SHIFT + J\"")
-            (mkLuaInline "hl.dsp.window.move({ direction = 'd' })")
-          ];
-        }
+          # Move window
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + SHIFT + H\"")
+              (mkLuaInline "hl.dsp.window.move({ direction = 'l' })")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + SHIFT + L\"")
+              (mkLuaInline "hl.dsp.window.move({ direction = 'r' })")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + SHIFT + K\"")
+              (mkLuaInline "hl.dsp.window.move({ direction = 'u' })")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + SHIFT + J\"")
+              (mkLuaInline "hl.dsp.window.move({ direction = 'd' })")
+            ];
+          }
 
-        # Workspaces cycle
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + mouse_down\"")
-            (mkLuaInline "hl.dsp.focus({ workspace = 'e+1' })")
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + mouse_up\"")
-            (mkLuaInline "hl.dsp.focus({ workspace = 'e-1' })")
-          ];
-        }
+          # Workspaces cycle
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + mouse_down\"")
+              (mkLuaInline "hl.dsp.focus({ workspace = 'e+1' })")
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + mouse_up\"")
+              (mkLuaInline "hl.dsp.focus({ workspace = 'e-1' })")
+            ];
+          }
 
-        # Drag / resize
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + mouse:272\"")
-            (mkLuaInline "hl.dsp.window.drag()")
-            { mouse = true; }
-          ];
-        }
-        {
-          _args = [
-            (mkLuaInline "mod .. \" + mouse:273\"")
-            (mkLuaInline "hl.dsp.window.resize()")
-            { mouse = true; }
-          ];
-        }
+          # Drag / resize
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + mouse:272\"")
+              (mkLuaInline "hl.dsp.window.drag()")
+              {mouse = true;}
+            ];
+          }
+          {
+            _args = [
+              (mkLuaInline "mod .. \" + mouse:273\"")
+              (mkLuaInline "hl.dsp.window.resize()")
+              {mouse = true;}
+            ];
+          }
 
-        # Media keys
-        {
-          _args = [
-            "XF86AudioRaiseVolume"
-            (mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+')")
-            {
-              locked = true;
-              repeating = true;
-            }
-          ];
-        }
-        {
-          _args = [
-            "XF86AudioLowerVolume"
-            (mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')")
-            {
-              locked = true;
-              repeating = true;
-            }
-          ];
-        }
-        {
-          _args = [
-            "XF86AudioMute"
-            (mkLuaInline "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')")
-            {
-              locked = true;
-              repeating = true;
-            }
-          ];
-        }
-        {
-          _args = [
-            "XF86AudioMicMute"
-            (mkLuaInline "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle')")
-            {
-              locked = true;
-              repeating = true;
-            }
-          ];
-        }
-        {
-          _args = [
-            "XF86MonBrightnessUp"
-            (mkLuaInline "hl.dsp.exec_cmd('brightnessctl -e4 -n2 set 5%+')")
-            {
-              locked = true;
-              repeating = true;
-            }
-          ];
-        }
-        {
-          _args = [
-            "XF86MonBrightnessDown"
-            (mkLuaInline "hl.dsp.exec_cmd('brightnessctl -e4 -n2 set 5%-')")
-            {
-              locked = true;
-              repeating = true;
-            }
-          ];
-        }
-        {
-          _args = [
-            "XF86AudioNext"
-            (mkLuaInline "hl.dsp.exec_cmd('playerctl next')")
-            { locked = true; }
-          ];
-        }
-        {
-          _args = [
-            "XF86AudioPause"
-            (mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')")
-            { locked = true; }
-          ];
-        }
-        {
-          _args = [
-            "XF86AudioPlay"
-            (mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')")
-            { locked = true; }
-          ];
-        }
-        {
-          _args = [
-            "XF86AudioPrev"
-            (mkLuaInline "hl.dsp.exec_cmd('playerctl previous')")
-            { locked = true; }
-          ];
-        }
-      ]
-      ++ lib.concatLists (
-        lib.genList (
-          i:
-          let
-            ws = i + 1;
-            key = toString (lib.mod ws 10);
-          in
-          [
-            {
-              _args = [
-                (mkLuaInline "mod .. \" + ${key}\"")
-                (mkLuaInline "hl.dsp.focus({ workspace = ${toString ws} })")
-              ];
-            }
-            {
-              _args = [
-                (mkLuaInline "mod .. \" + SHIFT + ${key}\"")
-                (mkLuaInline "hl.dsp.window.move({ workspace = ${toString ws} })")
-              ];
-            }
-          ]
-        ) 10
-      );
+          # Media keys
+          {
+            _args = [
+              "XF86AudioRaiseVolume"
+              (mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioLowerVolume"
+              (mkLuaInline "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioMute"
+              (mkLuaInline "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioMicMute"
+              (mkLuaInline "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86MonBrightnessUp"
+              (mkLuaInline "hl.dsp.exec_cmd('brightnessctl -e4 -n2 set 5%+')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86MonBrightnessDown"
+              (mkLuaInline "hl.dsp.exec_cmd('brightnessctl -e4 -n2 set 5%-')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioNext"
+              (mkLuaInline "hl.dsp.exec_cmd('playerctl next')")
+              {locked = true;}
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPause"
+              (mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')")
+              {locked = true;}
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPlay"
+              (mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')")
+              {locked = true;}
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPrev"
+              (mkLuaInline "hl.dsp.exec_cmd('playerctl previous')")
+              {locked = true;}
+            ];
+          }
+        ]
+        ++ lib.concatLists (
+          lib.genList (
+            i: let
+              ws = i + 1;
+              key = toString (lib.mod ws 10);
+            in [
+              {
+                _args = [
+                  (mkLuaInline "mod .. \" + ${key}\"")
+                  (mkLuaInline "hl.dsp.focus({ workspace = ${toString ws} })")
+                ];
+              }
+              {
+                _args = [
+                  (mkLuaInline "mod .. \" + SHIFT + ${key}\"")
+                  (mkLuaInline "hl.dsp.window.move({ workspace = ${toString ws} })")
+                ];
+              }
+            ]
+          )
+          10
+        );
 
       window_rule = [
         {
