@@ -67,7 +67,11 @@ let
 
     -- Treesitter
     opt.runtimepath:append("${treesitterGrammars}")
-    vim.treesitter.start()
+    vim.api.nvim_create_autocmd("BufEnter", {
+      callback = function()
+        pcall(vim.treesitter.start)
+      end,
+    })
   '';
 in
 pkgs.symlinkJoin {
