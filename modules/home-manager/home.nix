@@ -26,6 +26,8 @@ in {
       playerctl
       brightnessctl
       gawk
+      herdr
+      omp
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.05";
@@ -35,7 +37,6 @@ in {
   };
   imports = [
     ./firefox.nix
-    ./tmux.nix
     ./hyprland.nix
     ./nvf.nix
     ./yazi.nix
@@ -47,7 +48,6 @@ in {
     satty.enable = true;
     kitty.enable = true;
     mpv.enable = true;
-    opencode.enable = true;
     lazygit.enable = true;
     fzf.enable = true;
     gh.enable = true;
