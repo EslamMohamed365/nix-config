@@ -49,7 +49,10 @@
       imports = [wrappers.flakeModules.wrappers];
 
       perSystem = { pkgs, ... }: {
-        packages.neovim = pkgs.callPackage ./modules/wrappers/nvim.nix {};
+        packages.neovim = (import ./modules/wrappers/nvf-standalone.nix {
+          inherit pkgs;
+          nvf = inputs.nvf;
+        }).neovim;
       };
 
       flake.wrappers.tmux = import ./modules/wrappers/tmux.nix;
