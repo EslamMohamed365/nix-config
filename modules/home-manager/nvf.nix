@@ -41,6 +41,17 @@
             type = ["alejandra"];
           };
         };
+        python = {
+          enable = true;
+          lsp = {
+            enable = true;
+            servers = ["ruff"];
+          };
+          format = {
+            enable = true;
+            type = ["ruff"];
+          };
+        };
         bash.enable = true;
         lua.enable = true;
         json.enable = true;
