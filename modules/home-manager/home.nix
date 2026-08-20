@@ -25,9 +25,6 @@ in {
       skills
       playerctl
       brightnessctl
-      gawk
-      herdr
-      omp
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.05";
@@ -41,6 +38,7 @@ in {
     ./nvf.nix
     ./yazi.nix
     ./zsh.nix
+    ./tmux.nix
   ];
   programs = {
     devenv.enable = true;
@@ -52,6 +50,7 @@ in {
     fzf.enable = true;
     gh.enable = true;
     tealdeer.enable = true;
+    opencode.enable = true;
     fuzzel = {
       enable = true;
       settings = {
