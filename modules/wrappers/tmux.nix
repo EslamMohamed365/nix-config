@@ -12,6 +12,9 @@
   terminal = "screen-256color";
   clock24 = true;
   vimVisualKeys = true;
+  # Set TERM before tmux starts so it doesn't choke on xterm-kitty
+  #ponytail: env option from makeWrapper module, overrides $TERM in the wrapper script
+  env.TERM = "screen-256color";
   configAfter = ''
     set -ga terminal-overrides ",*:RGB"
     set -g set-clipboard on
