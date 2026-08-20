@@ -13,7 +13,7 @@ let
 
   formatters = with pkgs; [
     shfmt # shell
-    nixfmt-rfc-style # nix
+    nixfmt # nix
     stylua # lua
     ruff # python
   ];
