@@ -8,10 +8,18 @@ let
     dockerfile-language-server # dockerfile
     taplo # toml
     lua-language-server # lua
+    bash-language-server # sh
+  ];
+
+  formatters = with pkgs; [
+    shfmt # shell
+    nixfmt-rfc-style # nix
+    stylua # lua
+    ruff # python
   ];
 
   treesitterGrammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: with p; [
-    nix python yaml dockerfile toml lua
+    nix python yaml dockerfile toml lua bash
   ]);
 
   initLua = ''
@@ -47,8 +55,13 @@ let
     map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next buf" })
     map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Prev buf" })
 
+    -- Snippets (built-in vim.snippet)
+    local snip = vim.snippet
+    map({ "i", "n" }, "<C-j>", function() snip.jump(1) end, { desc = "Snippet next" })
+    map({ "i", "n" }, "<C-k>", function() snip.jump(-1) end, { desc = "Snippet prev" })
+
     -- LSP
-    vim.lsp.enable({ "nil_ls", "pyright", "yamlls", "dockerls", "taplo", "lua_ls" })
+    vim.lsp.enable({ "nil_ls", "pyright", "yamlls", "dockerls", "taplo", "lua_ls", "bashls" })
 
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
@@ -62,6 +75,13 @@ let
         map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, b)
         map("n", "[d", vim.diagnostic.goto_prev, b)
         map("n", "]d", vim.diagnostic.goto_next, b)
+      end,
+    })
+
+    -- Format on save
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      callback = function()
+        vim.lsp.buf.format({ async = false, timeout_ms = 2000 })
       end,
     })
 
@@ -81,10 +101,10 @@ pkgs.symlinkJoin {
   postBuild = ''
     wrapProgram $out/bin/nvim \
       --add-flags "-u ${pkgs.writeText "init.lua" initLua}" \
-      --prefix PATH : ${pkgs.lib.makeBinPath langServers}
+      --prefix PATH : ${pkgs.lib.makeBinPath (langServers ++ formatters)}
   '';
   meta = {
-    description = "Minimal productive Neovim for nix/python/yaml/docker/toml/lua";
+    description = "Minimal productive Neovim for nix/python/yaml/docker/toml/lua/shell";
     mainProgram = "nvim";
   };
 }
