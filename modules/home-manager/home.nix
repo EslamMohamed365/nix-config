@@ -16,7 +16,7 @@ in {
     packages = with pkgs; [
       sn
       pq
-      ytdownloader
+      video-downloader
       quranDownloader
       ripgrep
       fetch
