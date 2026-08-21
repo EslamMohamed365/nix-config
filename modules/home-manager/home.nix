@@ -7,12 +7,14 @@
 }: let
   quranDownloader = pkgs.callPackage ../../scripts/quranDownloader.nix {};
   pq = pkgs.callPackage ../../scripts/pq.nix {};
+  sn = pkgs.callPackage ../../scripts/ns.nix {};
 in {
   home = {
     username = "eslam";
     homeDirectory = "/home/eslam";
     shell.enableZshIntegration = true;
     packages = with pkgs; [
+      sn
       pq
       ytdownloader
       quranDownloader
