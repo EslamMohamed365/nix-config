@@ -28,6 +28,15 @@
         servers."yaml-language-server".settings.yaml.schemas.kubernetes = ["*.yaml"];
       };
 
+      # Inline error/warning/lint messages
+      diagnostics = {
+        enable = true;
+        config = {
+          virtual_text = true;
+          signs = true;
+        };
+      };
+
       languages = {
         enableFormat = true;
         enableTreesitter = true;
