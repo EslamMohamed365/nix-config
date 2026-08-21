@@ -25,6 +25,9 @@ nvf.lib.neovimConfiguration {
           enable = true;
           formatOnSave = true;
           trouble.enable = true;
+
+          # Kubernetes schema for YAML manifests
+          servers."yaml-language-server".settings.yaml.schemas.kubernetes = ["*.yaml"];
         };
 
         languages = {

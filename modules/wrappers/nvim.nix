@@ -155,6 +155,29 @@
     augroup netrw_setup | au!
         au FileType netrw nmap <buffer> l <CR>
     augroup END
+
+    " ========================================
+    " LSP - Kubernetes YAML (native, no plugins)
+    " ========================================
+
+    lua << EOF
+    vim.lsp.config("yaml-language-server", {
+      cmd = { "yaml-language-server", "--stdio" },
+      filetypes = { "yaml" },
+      settings = {
+        yaml = {
+          schemas = { kubernetes = "*.yaml" },
+          schemaStore = { enable = true },
+        },
+      },
+    })
+    vim.lsp.enable("yaml-language-server")
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(args)
+        vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
+      end,
+    })
+    EOF
   '';
 in
   pkgs.symlinkJoin {
@@ -163,7 +186,8 @@ in
     buildInputs = [pkgs.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/nvim \
-        --add-flags "-u ${pkgs.writeText "init.vim" initVim}"
+        --add-flags "-u ${pkgs.writeText "init.vim" initVim}" \
+        --prefix PATH : ${pkgs.yaml-language-server}/bin
     '';
     meta = {
       description = "Neovim with custom config";
