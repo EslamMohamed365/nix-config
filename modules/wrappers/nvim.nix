@@ -113,6 +113,11 @@
     inoremap jk <ESC>
     inoremap kj <ESC>
 
+    " Completion popup: Tab/S-Tab cycle, Enter accepts without newline
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
+
     vnoremap p "_dP
 
     noremap <leader>y "+y
