@@ -2,8 +2,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:vic/import-tree";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    import-tree = {
+      url = "github:vic/import-tree";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -17,6 +24,11 @@
 
     nvf = {
       url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -48,12 +60,13 @@
 
       imports = [wrappers.flakeModules.wrappers];
 
-      perSystem = { pkgs, ... }: {
+      perSystem = {pkgs, ...}: {
         packages.neovim = pkgs.callPackage ./modules/wrappers/nvim.nix {};
-        packages.nvf = (import ./modules/wrappers/nvf.nix {
-          inherit pkgs;
-          nvf = inputs.nvf;
-        }).neovim;
+        packages.nvf =
+          (import ./modules/wrappers/nvf.nix {
+            inherit pkgs;
+            inherit (inputs) nvf;
+          }).neovim;
       };
 
       flake.wrappers.tmux = import ./modules/wrappers/tmux.nix;
