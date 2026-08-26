@@ -27,7 +27,7 @@ sleep 0.25
 
 # Step 3: Run hyprshot
 case "$ACTION" in
-*"Save & Copy"*) hyprshot "$MODE" -s -o "$SAVE_DIR" ;;
-*"Clipboard Only"*) hyprshot "$MODE" -s --clipboard-only ;;
+*"Save & Copy"*) hyprshot $MODE -s -o "$SAVE_DIR" ;;
+*"Clipboard Only"*) hyprshot $MODE -s --clipboard-only ;;
 *"Edit"*) hyprshot "$MODE" --raw -s | satty --filename - ;;
 esac

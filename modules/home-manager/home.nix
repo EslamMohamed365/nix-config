@@ -16,6 +16,7 @@ in {
     packages = with pkgs; [
       sn
       pq
+      qbittorrent
       video-downloader
       quranDownloader
       ripgrep
