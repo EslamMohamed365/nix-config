@@ -11,9 +11,10 @@
   ];
 
   # NVIDIA proprietary driver (nouveau can't game)
+  services.xserver.videoDrivers = ["modesetting" "nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
-    open = false;
+    open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     prime = {
@@ -39,6 +40,7 @@
       gamescopeSession.enable = true;
       protontricks.enable = true;
       platformOptimizations.enable = true;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
     };
     gamemode.enable = true;
   };
@@ -50,8 +52,6 @@
 
   # Launch games with nvidia-offload env by default
   environment.sessionVariables = {
-    "__NV_PRIME_RENDER_OFFLOAD" = "1";
-    "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
     "WINE_FULLSCREEN_FSR" = "1";
   };
 }

@@ -9,6 +9,7 @@
       vf = "nvim $(fzf)";
       nos = "nh os switch";
       nclean = "nh clean all --optimise -k 3";
+      oc = "opencode";
     };
     enableCompletion = true;
     autosuggestion.enable = true;
