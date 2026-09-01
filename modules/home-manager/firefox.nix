@@ -55,6 +55,11 @@
         ];
       };
       settings = {
+        # --- WebGPU & Hardware Acceleration ---
+        "dom.webgpu.enabled" = true;
+        "gfx.webgpu.force-enabled" = true;
+        "gfx.webrender.all" = true;
+
         "extensions.autoDisableScopes" = 0;
 
         "network.trr.mode" = 2;
