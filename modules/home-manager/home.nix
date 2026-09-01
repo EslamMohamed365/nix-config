@@ -37,6 +37,7 @@ in {
   };
   imports = [
     ./firefox.nix
+    ./herdr.nix
     ./hyprland.nix
     ./nvf.nix
     ./yazi.nix
