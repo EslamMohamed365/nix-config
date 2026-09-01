@@ -26,7 +26,6 @@
         "cp"
         "eza"
         "kitty"
-        "tmux"
       ];
     };
   };

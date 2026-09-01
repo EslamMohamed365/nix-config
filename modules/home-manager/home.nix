@@ -42,7 +42,7 @@ in {
     ./nvf.nix
     ./yazi.nix
     ./zsh.nix
-    ./tmux.nix
+    # ./tmux.nix
   ];
   programs = {
     devenv.enable = true;
