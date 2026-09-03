@@ -23,6 +23,7 @@ in {
       fetch
       git-extras
       fd
+      persepolis
       wl-clipboard
       pavucontrol
       skills
