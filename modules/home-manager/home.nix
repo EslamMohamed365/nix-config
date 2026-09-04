@@ -43,6 +43,7 @@ in {
     ./nvf.nix
     ./yazi.nix
     ./zsh.nix
+    ./gaming.nix
     # ./tmux.nix
   ];
   programs = {

@@ -10,6 +10,7 @@
     wget
     deadnix
     unrar
+    p7zip
   ];
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";

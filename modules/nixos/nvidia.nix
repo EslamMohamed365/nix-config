@@ -1,14 +1,9 @@
 # Gaming: NVIDIA proprietary driver, Vulkan, Steam, GameMode, nix-gaming
 {
   config,
-  inputs,
   pkgs,
   ...
 }: {
-  imports = [
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
-    inputs.nix-gaming.nixosModules.platformOptimizations
-  ];
   # NVIDIA proprietary driver (nouveau can't game)
   services.xserver.videoDrivers = ["modesetting" "nvidia"];
   hardware.nvidia = {
@@ -32,18 +27,9 @@
     enable32Bit = true;
   };
 
-  # Steam with platform optimizations from nix-gaming
   programs = {
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-      protontricks.enable = true;
-      platformOptimizations.enable = true;
-      extraCompatPackages = with pkgs; [proton-ge-bin];
-    };
     gamemode = {
       enable = true;
-      enableRenice = true;
       settings = {
         general = {
           renice = 10;
@@ -52,20 +38,15 @@
         gpu = {
           apply_gpu_optimisations = "accept-responsibility";
           gpu_device = 0;
-          nv_powermizer_mode = 1; # يثبت كارت NVIDIA على أعلى تردد دائمًا أثناء اللعب
+          nv_powermizer_mode = 1;
         };
         custom = {
-          start = "${pkgs.libnotify}/bin/notify-send 'GameMode' 'Optimizations Active'";
-          end = "${pkgs.libnotify}/bin/notify-send 'GameMode' 'Optimizations Deactivated'";
+          start = "${pkgs.libnotify}/bin/notify-send 'gamemode' 'optimizations active'";
+          end = "${pkgs.libnotify}/bin/notify-send 'gamemode' 'optimizations deactivated'";
         };
       };
     };
   };
-
-  environment.systemPackages = [
-    pkgs.wineWow64Packages.staging
-    pkgs.winetricks
-  ];
 
   # Launch games with nvidia-offload env by default
   environment.sessionVariables = {
