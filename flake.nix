@@ -59,10 +59,14 @@
 
       perSystem = {pkgs, ...}: {
         packages.neovim = pkgs.callPackage ./modules/wrappers/nvim.nix {};
-        packages.nvf =
-          (import ./modules/wrappers/nvf.nix {
+        packages.nvf = let
+          hmModule = import ./modules/home-manager/active-config/nvf.nix {inherit inputs;};
+        in
+          (inputs.nvf.lib.neovimConfiguration {
             inherit pkgs;
-            inherit (inputs) nvf;
+            modules = [
+              {config.vim = hmModule.programs.nvf.settings.vim;}
+            ];
           }).neovim;
       };
 
