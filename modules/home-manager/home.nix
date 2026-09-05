@@ -37,7 +37,9 @@ in {
   stylix = {
     targets.firefox.profileNames = ["eslam"];
   };
-  imports = inputs.import-tree ./active-config;
+  imports = [
+    (inputs.import-tree ./active-config)
+  ];
   programs = {
     devenv.enable = true;
     starship.enable = true;
