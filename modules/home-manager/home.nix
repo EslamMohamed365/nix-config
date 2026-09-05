@@ -3,6 +3,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
   quranDownloader = pkgs.callPackage ../../scripts/quranDownloader.nix {};
@@ -36,16 +37,7 @@ in {
   stylix = {
     targets.firefox.profileNames = ["eslam"];
   };
-  imports = [
-    ./firefox.nix
-    ./herdr.nix
-    ./hyprland.nix
-    ./nvf.nix
-    ./yazi.nix
-    ./zsh.nix
-    ./gaming.nix
-    # ./tmux.nix
-  ];
+  imports = inputs.import-tree ./active-config;
   programs = {
     devenv.enable = true;
     starship.enable = true;
