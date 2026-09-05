@@ -52,9 +52,20 @@
           sponsorblock
           vimium
           youtube-shorts-block
+          sidebery
+          single-file
+          refined-github
+          don-t-fuck-with-paste
+          tablissng
         ];
       };
       settings = {
+        # --- Native Vertical Tabs & Sidebar ---
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
+        "sidebar.revamp.round-content-area" = true;
+        "sidebar.visibility" = "hide-sidebar";
+
         # --- WebGPU & Hardware Acceleration ---
         "dom.webgpu.enabled" = true;
         "gfx.webgpu.force-enabled" = true;
