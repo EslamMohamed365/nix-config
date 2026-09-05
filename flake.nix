@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:vic/import-tree";
+    import-tree.url = "github:denful/import-tree";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -72,13 +72,12 @@
         nix-btw = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {inherit inputs;};
-          modules =
-            [
-              stylix.nixosModules.stylix
-              "${nixpkgs}/nixos/modules/hardware/facter"
-              {hardware.facter.reportPath = ./facter.json;}
-            ]
-            ++ (inputs.import-tree ./modules/nixos).imports;
+          modules = [
+            stylix.nixosModules.stylix
+            "${nixpkgs}/nixos/modules/hardware/facter"
+            {hardware.facter.reportPath = ./facter.json;}
+            (inputs.import-tree ./modules/nixos)
+          ];
         };
       };
     };
