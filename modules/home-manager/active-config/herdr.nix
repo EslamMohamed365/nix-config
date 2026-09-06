@@ -17,7 +17,6 @@
 
       # Explicit theme and shell
       theme.name = "gruvbox";
-      terminal.default_shell = "zsh";
 
       keys = {
         prefix = "ctrl+a";

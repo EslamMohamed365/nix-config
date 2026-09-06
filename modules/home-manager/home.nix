@@ -13,7 +13,7 @@ in {
   home = {
     username = "eslam";
     homeDirectory = "/home/eslam";
-    shell.enableZshIntegration = true;
+    shell.enableNushellIntegration = true;
     packages = with pkgs; [
       sn
       pq
@@ -30,6 +30,7 @@ in {
       skills
       playerctl
       brightnessctl
+      awscli2
     ];
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.05";
