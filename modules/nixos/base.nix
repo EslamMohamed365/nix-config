@@ -18,7 +18,6 @@
     memoryPercent = 50;
   };
   programs = {
-    zsh.enable = true;
     ssh = {
       startAgent = true;
     };
