@@ -1,4 +1,4 @@
-# Gaming: NVIDIA proprietary driver, Vulkan, Steam, GameMode, nix-gaming
+# Gaming: NVIDIA proprietary driver, Vulkan, Steam, GameMode
 {
   config,
   pkgs,
