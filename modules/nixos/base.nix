@@ -1,9 +1,5 @@
 # Shared configuration for all hosts.
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   time.timeZone = "Africa/Cairo";
   environment.systemPackages = with pkgs; [
     ntfs3g
@@ -14,7 +10,6 @@
   ];
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    FLAKE = "${config.users.users.eslam.home}/nix-config";
   };
   zramSwap = {
     enable = true;
