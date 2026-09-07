@@ -49,11 +49,11 @@ in {
     kitty.enable = true;
     mpv.enable = true;
     lazygit.enable = true;
-    fzf.enable = true;
     gh.enable = true;
     tealdeer.enable = true;
     opencode.enable = true;
     carapace.enable = true;
+    fzf.enable = true;
     fuzzel = {
       enable = true;
       settings = {
@@ -74,11 +74,6 @@ in {
         rounded_corners = true;
         terminal_sync = true;
       };
-    };
-    eza = {
-      enable = true;
-      icons = "auto";
-      git = true;
     };
     zoxide = {
       enable = true;
@@ -122,7 +117,7 @@ in {
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = "${config.home.homeDirectory}/nix-config"; # sets NH_OS_FLAKE variable for you
+      flake = "${config.home.homeDirectory}/nix-config"; # sets NH_FLAKE variable for you
     };
   };
   services = {
