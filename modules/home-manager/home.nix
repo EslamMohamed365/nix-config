@@ -53,6 +53,7 @@ in {
     gh.enable = true;
     tealdeer.enable = true;
     opencode.enable = true;
+    carapace.enable = true;
     fuzzel = {
       enable = true;
       settings = {

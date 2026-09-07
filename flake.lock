@@ -378,22 +378,6 @@
         "type": "github"
       }
     },
-    "nu-scripts": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1787656855,
-        "narHash": "sha256-vW8Lz9MQwIT7WKv2ZkVTiq+398p20RszGZhIZ3I2kq8=",
-        "owner": "nushell",
-        "repo": "nu_scripts",
-        "rev": "cee236cf46a597b43f36b56ccee5881fc0483c56",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nushell",
-        "repo": "nu_scripts",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -450,7 +434,6 @@
         "import-tree": "import-tree",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs",
-        "nu-scripts": "nu-scripts",
         "nvf": "nvf",
         "stylix": "stylix",
         "wrappers": "wrappers"
