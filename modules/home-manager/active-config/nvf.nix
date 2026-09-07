@@ -76,7 +76,6 @@
       mini = {
         ai.enable = true;
         align.enable = true;
-        basics.enable = true;
         bracketed.enable = true;
         bufremove.enable = true;
         comment.enable = true;
@@ -101,7 +100,6 @@
           enable = true;
           setupOpts = {
             triggers = [
-              # Leader triggers
               {
                 mode = "n";
                 keys = "<Leader>";
@@ -110,14 +108,10 @@
                 mode = "x";
                 keys = "<Leader>";
               }
-
-              # Built-in completion triggers
               {
                 mode = "i";
                 keys = "<C-x>";
               }
-
-              # `g` key triggers
               {
                 mode = "n";
                 keys = "g";
@@ -126,8 +120,6 @@
                 mode = "x";
                 keys = "g";
               }
-
-              # Marks
               {
                 mode = "n";
                 keys = "'";
@@ -144,8 +136,6 @@
                 mode = "x";
                 keys = "`";
               }
-
-              # Registers
               {
                 mode = "n";
                 keys = ''"'';
@@ -162,14 +152,10 @@
                 mode = "c";
                 keys = "<C-r>";
               }
-
-              # Window commands
               {
                 mode = "n";
                 keys = "<C-w>";
               }
-
-              # `z` key triggers
               {
                 mode = "n";
                 keys = "z";
@@ -178,8 +164,6 @@
                 mode = "x";
                 keys = "z";
               }
-
-              # Brackets (mini.bracketed)
               {
                 mode = "n";
                 keys = "]";
@@ -191,7 +175,6 @@
             ];
 
             clues = [
-              # Built-in clues generators
               {__raw = "require('mini.clue').gen_clues.builtin_completion()";}
               {__raw = "require('mini.clue').gen_clues.g()";}
               {__raw = "require('mini.clue').gen_clues.marks()";}
@@ -199,7 +182,6 @@
               {__raw = "require('mini.clue').gen_clues.windows()";}
               {__raw = "require('mini.clue').gen_clues.z()";}
 
-              # Descriptions for custom groups
               {
                 mode = "n";
                 keys = "<Leader>b";
@@ -214,6 +196,11 @@
                 mode = "n";
                 keys = "<Leader>f";
                 desc = "+Find (mini.pick)";
+              }
+              {
+                mode = "n";
+                keys = "<Leader>w";
+                desc = "+Windows / Splits";
               }
               {
                 mode = "n";
@@ -233,19 +220,11 @@
         };
       };
 
-      autocomplete = {
-        nvim-cmp.enable = false;
-        blink-cmp.enable = true;
-      };
+      autocomplete.blink-cmp.enable = true;
 
-      treesitter = {
-        enable = true;
-        context.enable = false;
-      };
+      treesitter.enable = true;
 
-      utility = {
-        undotree.enable = true;
-      };
+      utility.undotree.enable = true;
 
       # ==========================================
       # Keymaps
@@ -267,7 +246,7 @@
           desc = "Next Buffer";
         }
 
-        # Window Splits Navigation (Ctrl+h / Ctrl+j / Ctrl+k / Ctrl+l)
+        # Window Splits Navigation
         {
           key = "<C-h>";
           mode = "n";
@@ -295,6 +274,36 @@
           silent = true;
           action = "<C-w>k";
           desc = "Focus Upper Window";
+        }
+
+        # Window Splitting & Resizing
+        {
+          key = "<leader>wv";
+          mode = "n";
+          silent = true;
+          action = "<cmd>vsplit<CR>";
+          desc = "Split Window Vertically";
+        }
+        {
+          key = "<leader>ws";
+          mode = "n";
+          silent = true;
+          action = "<cmd>split<CR>";
+          desc = "Split Window Horizontally";
+        }
+        {
+          key = "<leader>we";
+          mode = "n";
+          silent = true;
+          action = "<C-w>=";
+          desc = "Make Splits Equal Size";
+        }
+        {
+          key = "<leader>wd";
+          mode = "n";
+          silent = true;
+          action = "<C-w>c";
+          desc = "Close Current Window";
         }
 
         # Buffer Close (Preserves Split)
