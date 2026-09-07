@@ -8,6 +8,7 @@
       nos = "nh os switch";
       nclean = "nh clean all --optimise -k 3";
       oc = "opencode";
+      ll = "ls -la";
     };
     extraConfig = ''
       $env.config = {
