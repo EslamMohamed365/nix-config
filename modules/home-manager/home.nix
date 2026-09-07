@@ -43,6 +43,7 @@ in {
   ];
   programs = {
     devenv.enable = true;
+    jqp.enable = true;
     starship.enable = true;
     satty.enable = true;
     kitty.enable = true;
