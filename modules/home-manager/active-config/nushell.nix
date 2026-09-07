@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{inputs, ...}: {
   programs.nushell = {
     enable = true;
     shellAliases = {
@@ -10,9 +10,11 @@
       oc = "opencode";
     };
     extraConfig = ''
-      $env.config = {
-        edit_mode: "vi"
-      }
+            $env.config = {
+              edit_mode: "vi"
+            }
+      use ${inputs.nu-scripts}/custom-completions/aws/aws-completions.nu *
+      use ${inputs.nu-scripts}/custom-completions/gh/gh-completions.nu *
     '';
   };
 }
