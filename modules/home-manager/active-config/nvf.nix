@@ -22,13 +22,9 @@
       lsp = {
         enable = true;
         formatOnSave = true;
-        trouble.enable = true;
-
-        # Kubernetes schema for YAML manifests
         servers."yaml-language-server".settings.yaml.schemas.kubernetes = ["*.yaml"];
       };
 
-      # Inline error/warning/lint messages
       diagnostics = {
         enable = true;
         config = {
@@ -74,17 +70,167 @@
         };
       };
 
+      # ==========================================
+      # Full Mini Ecosystem & Clue Setup
+      # ==========================================
       mini = {
-        move.enable = false;
-        pairs.enable = true;
+        ai.enable = true;
+        align.enable = true;
+        basics.enable = true;
+        bracketed.enable = true;
+        bufremove.enable = true;
         comment.enable = true;
+        diff.enable = true;
+        extra.enable = true;
+        files.enable = true;
+        fuzzy.enable = true;
+        git.enable = true;
+        hipatterns.enable = true;
+        icons.enable = true;
         indentscope.enable = true;
+        pairs.enable = true;
+        pick.enable = true;
+        snippets.enable = true;
+        splitjoin.enable = true;
         statusline.enable = true;
         surround.enable = true;
-        files.enable = true;
-        pick.enable = true;
-        icons.enable = true;
-        snippets.enable = true;
+        tabline.enable = true;
+        trailspace.enable = true;
+
+        clue = {
+          enable = true;
+          setupOpts = {
+            triggers = [
+              # Leader triggers
+              {
+                mode = "n";
+                keys = "<Leader>";
+              }
+              {
+                mode = "x";
+                keys = "<Leader>";
+              }
+
+              # Built-in completion triggers
+              {
+                mode = "i";
+                keys = "<C-x>";
+              }
+
+              # `g` key triggers
+              {
+                mode = "n";
+                keys = "g";
+              }
+              {
+                mode = "x";
+                keys = "g";
+              }
+
+              # Marks
+              {
+                mode = "n";
+                keys = "'";
+              }
+              {
+                mode = "n";
+                keys = "`";
+              }
+              {
+                mode = "x";
+                keys = "'";
+              }
+              {
+                mode = "x";
+                keys = "`";
+              }
+
+              # Registers
+              {
+                mode = "n";
+                keys = ''"'';
+              }
+              {
+                mode = "x";
+                keys = ''"'';
+              }
+              {
+                mode = "i";
+                keys = "<C-r>";
+              }
+              {
+                mode = "c";
+                keys = "<C-r>";
+              }
+
+              # Window commands
+              {
+                mode = "n";
+                keys = "<C-w>";
+              }
+
+              # `z` key triggers
+              {
+                mode = "n";
+                keys = "z";
+              }
+              {
+                mode = "x";
+                keys = "z";
+              }
+
+              # Brackets (mini.bracketed)
+              {
+                mode = "n";
+                keys = "]";
+              }
+              {
+                mode = "n";
+                keys = "[";
+              }
+            ];
+
+            clues = [
+              # Built-in clues generators
+              {__raw = "require('mini.clue').gen_clues.builtin_completion()";}
+              {__raw = "require('mini.clue').gen_clues.g()";}
+              {__raw = "require('mini.clue').gen_clues.marks()";}
+              {__raw = "require('mini.clue').gen_clues.registers()";}
+              {__raw = "require('mini.clue').gen_clues.windows()";}
+              {__raw = "require('mini.clue').gen_clues.z()";}
+
+              # Descriptions for custom groups
+              {
+                mode = "n";
+                keys = "<Leader>b";
+                desc = "+Buffers";
+              }
+              {
+                mode = "n";
+                keys = "<Leader>c";
+                desc = "+Code / LSP";
+              }
+              {
+                mode = "n";
+                keys = "<Leader>f";
+                desc = "+Find (mini.pick)";
+              }
+              {
+                mode = "n";
+                keys = "<Leader>x";
+                desc = "+Diagnostics (mini.extra)";
+              }
+            ];
+
+            window = {
+              delay = 300;
+              config = {
+                width = "auto";
+                border = "rounded";
+              };
+            };
+          };
+        };
       };
 
       autocomplete = {
@@ -97,31 +243,70 @@
         context.enable = false;
       };
 
-      binds.whichKey.enable = true;
-
       utility = {
         undotree.enable = true;
-        smart-splits.enable = true;
       };
 
       # ==========================================
       # Keymaps
       # ==========================================
       keymaps = [
+        # Buffer Navigation (Shift+h / Shift+l)
         {
-          key = "<C-h>";
+          key = "H";
           mode = "n";
           silent = true;
           action = "<cmd>bprevious<CR>";
           desc = "Previous Buffer";
         }
         {
-          key = "<C-l>";
+          key = "L";
           mode = "n";
           silent = true;
           action = "<cmd>bnext<CR>";
           desc = "Next Buffer";
         }
+
+        # Window Splits Navigation (Ctrl+h / Ctrl+j / Ctrl+k / Ctrl+l)
+        {
+          key = "<C-h>";
+          mode = "n";
+          silent = true;
+          action = "<C-w>h";
+          desc = "Focus Left Window";
+        }
+        {
+          key = "<C-l>";
+          mode = "n";
+          silent = true;
+          action = "<C-w>l";
+          desc = "Focus Right Window";
+        }
+        {
+          key = "<C-j>";
+          mode = "n";
+          silent = true;
+          action = "<C-w>j";
+          desc = "Focus Lower Window";
+        }
+        {
+          key = "<C-k>";
+          mode = "n";
+          silent = true;
+          action = "<C-w>k";
+          desc = "Focus Upper Window";
+        }
+
+        # Buffer Close (Preserves Split)
+        {
+          key = "<leader>bd";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua MiniBufremove.delete()<CR>";
+          desc = "Close Buffer (Preserve Split)";
+        }
+
+        # Mini.files
         {
           key = "<leader>e";
           mode = "n";
@@ -129,6 +314,8 @@
           action = "<cmd>lua if not MiniFiles.close() then MiniFiles.open() end<CR>";
           desc = "Toggle File Explorer";
         }
+
+        # Mini.pick Searches
         {
           key = "<leader>ff";
           mode = "n";
@@ -158,6 +345,39 @@
           desc = "Find Help Tags";
         }
 
+        # Diagnostics & Symbols (mini.extra)
+        {
+          key = "<leader>xx";
+          mode = "n";
+          silent = true;
+          action = "<cmd>Pick diagnostic scope='all'<CR>";
+          desc = "Workspace Diagnostics";
+        }
+        {
+          key = "<leader>xb";
+          mode = "n";
+          silent = true;
+          action = "<cmd>Pick diagnostic scope='current'<CR>";
+          desc = "Buffer Diagnostics";
+        }
+        {
+          key = "<leader>xs";
+          mode = "n";
+          silent = true;
+          action = "<cmd>Pick lsp scope='document_symbol'<CR>";
+          desc = "Document Symbols";
+        }
+
+        # Trailspace Trim
+        {
+          key = "<leader>cw";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua MiniTrailspace.trim()<CR>";
+          desc = "Trim Trailing Whitespace";
+        }
+
+        # Undotree
         {
           key = "<leader>u";
           mode = "n";
@@ -166,28 +386,7 @@
           desc = "Toggle Undotree";
         }
 
-        {
-          key = "<leader>xx";
-          mode = "n";
-          silent = true;
-          action = "<cmd>Trouble diagnostics toggle<CR>";
-          desc = "Project Diagnostics (Trouble)";
-        }
-        {
-          key = "<leader>xb";
-          mode = "n";
-          silent = true;
-          action = "<cmd>Trouble diagnostics toggle filter.buf=0<CR>";
-          desc = "Buffer Diagnostics (Trouble)";
-        }
-        {
-          key = "<leader>xs";
-          mode = "n";
-          silent = true;
-          action = "<cmd>Trouble symbols toggle<CR>";
-          desc = "Buffer Symbols (Trouble)";
-        }
-
+        # LSP Core Actions
         {
           key = "<leader>cr";
           mode = "n";
