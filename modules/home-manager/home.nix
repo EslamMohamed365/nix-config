@@ -63,14 +63,18 @@ in {
         "--border"
         "--bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down'"
       ];
-      fileWidgetCommand = "fd --type f --strip-cwd-prefix --hidden --exclude .git";
-      fileWidgetOptions = [
-        "--preview 'head -n 100 {}'"
-      ];
-      changeDirWidgetCommand = "fd --type d --strip-cwd-prefix --hidden --exclude .git";
-      changeDirWidgetOptions = [
-        "--preview 'ls -la {}'"
-      ];
+      fileWidget = {
+        command = "fd --type f --strip-cwd-prefix --hidden --exclude .git";
+        options = [
+          "--preview 'head -n 100 {}'"
+        ];
+      };
+      changeDirWidget = {
+        command = "fd --type d --strip-cwd-prefix --hidden --exclude .git";
+        options = [
+          "--preview 'ls -la {}'"
+        ];
+      };
     };
     fuzzel = {
       enable = true;
