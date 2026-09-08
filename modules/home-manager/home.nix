@@ -15,6 +15,7 @@ in {
     homeDirectory = "/home/eslam";
     shell.enableNushellIntegration = true;
     packages = with pkgs; [
+      worktrunk
       sn
       pq
       qbittorrent
@@ -53,7 +54,24 @@ in {
     tealdeer.enable = true;
     opencode.enable = true;
     carapace.enable = true;
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      defaultCommand = "fd --type f --strip-cwd-prefix --hidden --exclude .git";
+      defaultOptions = [
+        "--height 40%"
+        "--layout=reverse"
+        "--border"
+        "--bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down'"
+      ];
+      fileWidgetCommand = "fd --type f --strip-cwd-prefix --hidden --exclude .git";
+      fileWidgetOptions = [
+        "--preview 'head -n 100 {}'"
+      ];
+      changeDirWidgetCommand = "fd --type d --strip-cwd-prefix --hidden --exclude .git";
+      changeDirWidgetOptions = [
+        "--preview 'ls -la {}'"
+      ];
+    };
     fuzzel = {
       enable = true;
       settings = {

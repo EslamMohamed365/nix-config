@@ -4,7 +4,7 @@
     shellAliases = {
       v = "nvim";
       c = "clear";
-      vf = "nvim (fzf)";
+      vf = "nvim (fzf --preview 'head -n 100 {}' -m | str trim)";
       nos = "nh os switch";
       nclean = "nh clean all --optimise -k 3";
       oc = "opencode";
