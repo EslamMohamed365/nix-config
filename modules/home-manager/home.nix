@@ -138,6 +138,7 @@ in {
       flake = "${config.home.homeDirectory}/nix-config"; # sets NH_FLAKE variable for you
     };
   };
+  xdg.configFile."worktrunk/config.toml".source = ./config/worktrunk/config.toml;
   services = {
     mako.enable = true;
     cliphist.enable = true;
