@@ -16,6 +16,7 @@ in {
     shell.enableNushellIntegration = true;
     packages = with pkgs; [
       worktrunk
+      croc
       sn
       pq
       qbittorrent

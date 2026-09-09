@@ -22,7 +22,6 @@
       lsp = {
         enable = true;
         formatOnSave = true;
-        servers."yaml-language-server".settings.yaml.schemas.kubernetes = ["*.yaml"];
       };
 
       diagnostics = {
