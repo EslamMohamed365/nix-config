@@ -11,6 +11,6 @@ jobs:
       - name: print a welcome massage
         run: echo "Hi"
       - name: Checkout repo
-        uses: actions/checkout@7.0.1
+        uses: actions/checkout@7
       - name: ls files
         run: ls -la
