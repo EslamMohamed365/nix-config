@@ -10,3 +10,7 @@ jobs:
     steps:
       - name: print a welcome massage
         run: echo "Hi"
+      - name: Checkout repo
+        uses: actions/checkout@7.0.1
+      - name: ls files
+        run: ls -la
