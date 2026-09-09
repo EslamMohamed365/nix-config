@@ -1,0 +1,12 @@
+name: nix workflow
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  example-jos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print a welcome massage
+        run: echo "Hi"
