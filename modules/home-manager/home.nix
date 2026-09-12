@@ -55,6 +55,7 @@ in {
     tealdeer.enable = true;
     opencode.enable = true;
     carapace.enable = true;
+    alacritty.enable = true;
     fzf = {
       enable = true;
       defaultCommand = "fd --type f --strip-cwd-prefix --hidden --exclude .git";
@@ -134,6 +135,7 @@ in {
         user.name = "EslamMohamed365";
         user.email = "am5484452@gmail.com";
         init.defaultBranch = "main";
+        pull.rebase = true;
       };
     };
     nh = {

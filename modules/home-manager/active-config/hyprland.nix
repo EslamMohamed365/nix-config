@@ -24,7 +24,7 @@ in {
         _var = "SUPER";
       };
       terminal = {
-        _var = "kitty";
+        _var = "alacritty";
       };
       browser = {
         _var = "firefox";
